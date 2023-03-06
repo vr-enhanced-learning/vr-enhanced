@@ -1,5 +1,7 @@
 let bot = document.querySelector("#bot")
 let actionButtons = document.querySelectorAll(".actionButtons")
+let answerButton = document.querySelector("#answerButton")
+
 let startListening = false
 let QUESTION_ANSWER_SPACE_ENDPOINT =
 	"https://currentlyexhausted-mariorossi-t5-base-finetuned-que-ac173dd.hf.space/run/predict"
@@ -86,3 +88,34 @@ function constructQuery(context, question) {
 	}
 }
 
+
+
+answerButton.addEventListener("click", async function () {
+	startListening = false
+	let context = document
+		.querySelector("#contextInputField")
+		.getAttribute("text").value
+	let question = document
+		.querySelector("#questionInputField")
+		.getAttribute("text").value
+
+	document
+		.querySelector("#answerInputField")
+		.setAttribute("text", "value: Generating.... Please wait")
+	textToSpeech("Generating.... Please wait")
+
+	let queryData = constructQuery(context, question)
+	let result = await query(queryData)
+	console.log(result)
+
+	let answer = result.data[0]
+	let predictionTime = result.duration
+
+	document
+		.querySelector("#answerInputField")
+		.setAttribute(
+			"text",
+			"value: " + answer + " (took " + predictionTime + " seconds)"
+		)
+	textToSpeech(answer)
+})
