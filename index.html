@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Basic A-Frame for VR - Meta Quest</title>
+    <script src="./assets/js/aframe.min.js"></script>
+    <script src="./assets/js/htmlembed.js"></script>
+
+    <!-- New Navigation -->
+    <script src="./assets/js/raycaster-extras.js"></script>
+    <script src="./assets/js/controller-listener.js"></script>
+    <script src="./assets/js/player-move.js"></script>
+    <!-- A-Frame GLTF Exporter -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+</head>
+
+<body>
+
+
+    <a-scene gltf-model="dracoDecoderPath: decoder/" loading-screen="enabled: false">
+        
+        <!-- Assets preload -->
+        <a-assets id="assets">    
+        </a-assets>
+
+        
+        <a-plane class="groundPlane" scale="2 2 2" color="#333" width="8" height="8" rotation="-90 0 0" material=""
+            geometry="" position="0 0.01 0" visible="false"></a-plane>
+
+        <!-- Player -->
+        <a-entity id="player" position="0 0 0" player-move="controllerListenerId: #controller-data;
+              navigationMeshClass: groundPlane;">
+            <a-camera></a-camera>
+            <a-entity id="controller-data"
+                controller-listener="leftControllerId:  #left-controller; rightControllerId: #right-controller;">
+            </a-entity>
+            <a-entity id="left-controller" oculus-touch-controls="hand: left">
+            </a-entity>
+            <!-- experiment with raycasting interval; slight performance improvement but jittery appearance in world -->
+            <a-entity id="right-controller" oculus-touch-controls="hand: right" laser-controls="hand: right"
+                raycaster="objects: .raycaster-target, .navButton, .groundPlane; interval: 0;"
+                raycaster-extras="controllerListenerId: #controller-data; beamImageSrc: #gradient; beamLength: 0.5;">
+            </a-entity>
+        </a-entity>
+
+        <!-- Click events for mouse/laser-controls -->
+        <a-entity position="0 0 0" cursor="fuse: false; rayOrigin: mouse;" raycaster="objects: .navButton">
+        </a-entity>
+
+
+        <a-entity id="mainWindow" position="0 1.11 -0.8" rotation="-10 0 0" raycaster-target="canGrab: true;"
+            geometry="primitive: plane; width: 0.8; height: 0.28"
+            material="color: #5475d4; transparent: true; opacity: 0.5; side:double" scale="1 1 1" class="navButton">
+        </a-entity>
+
+        <a-sky color="#000"></a-sky>
+
+    </a-scene>
+
+</body>
+
+</html>
