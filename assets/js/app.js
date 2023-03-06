@@ -1,4 +1,16 @@
+let bot = document.querySelector("#bot")
+let actionButtons = document.querySelectorAll(".actionButtons")
 let startListening = false
+
+bot.addEventListener("click", function () {
+	for (let i = 0; i < actionButtons.length; i++) {
+		if (actionButtons[i].getAttribute("visible") == true) {
+			actionButtons[i].setAttribute("visible", false)
+		} else {
+			actionButtons[i].setAttribute("visible", true)
+		}
+	}
+})
 
 function speechToText(button, inputField) {
 	let context = ""
