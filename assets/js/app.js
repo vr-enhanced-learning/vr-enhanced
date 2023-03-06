@@ -79,3 +79,10 @@ async function query(data) {
 	const result = await response.json()
 	return result
 }
+
+function constructQuery(context, question) {
+	return {
+		data: [`question: ${question} context: ${context}`],
+	}
+}
+
