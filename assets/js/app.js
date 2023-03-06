@@ -41,3 +41,13 @@ function speechToText(button, inputField) {
 		speechRecognition.start()
 	})
 }
+
+speechToText(
+	document.querySelector("#contextButton"),
+	document.querySelector("#contextInputField")
+)
+speechToText(
+	document.querySelector("#questionButton"),
+	document.querySelector("#questionInputField")
+)
+
