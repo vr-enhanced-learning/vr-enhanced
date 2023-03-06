@@ -19,7 +19,6 @@
 
 <body>
 
-
     <a-scene gltf-model="dracoDecoderPath: decoder/" loading-screen="enabled: false">
 
         <!-- Assets preload -->
@@ -27,7 +26,6 @@
             <a-asset-item id="baymax" src="./assets/models/retsuko_from_aggretsuko_for_vr_chat.glb"></a-asset-item>
         </a-assets>
 
-        
         <a-plane class="groundPlane" scale="2 2 2" color="#333" width="8" height="8" rotation="-90 0 0" material=""
             geometry="" position="0 0.01 0" visible="false"></a-plane>
 
@@ -71,13 +69,11 @@
             material="color: #9b59b6; transparent: true; opacity: 0.5; side: double; emissive: #000000" scale=""
             class="navButton raycaster-target">
 
-
             <a-entity id="questionInputField" position="0.02088 0.007 0.05661" scale="0.5 0.5 0.5"
                 text="value: Your Context; color: #FFFFFF; width: 1.74; wrapCount: 62.65; zOffset: 0.01"
                 class="navButton raycaster-target" raycaster-target="" material="emissive: #000000">
 
             </a-entity>
-
 
         </a-entity>
 
@@ -86,25 +82,18 @@
             material="color: #4cd137; transparent: true; opacity: 0.5; side: double; emissive: #000000" scale=""
             class="navButton raycaster-target">
 
-
-
-
-
             <a-entity id="answerInputField" position="0.02088 0.007 0.05661" scale="0.5 0.5 0.5"
                 text="value: Your Context; color: #FFFFFF; width: 1.74; wrapCount: 62.65; zOffset: 0.01"
                 class="navButton raycaster-target" raycaster-target="" material="emissive: #000000">
 
             </a-entity>
 
-
-
-
         </a-entity>
+
         <a-entity id="bot" gltf-model="#baymax" position="0.55975 1.45858 -0.83611" scale="0.25 0.3 0.3"
             rotation="0 -29.999999999999996 0" raycaster-target="canGrab: true" class="navButton raycaster-target"
             material="emissive: #000000">
         </a-entity>
-
 
         <a-entity id="contextButton" position="0.36019 1.38188 -0.8" rotation="" raycaster-target="canGrab: true"
             geometry="primitive: plane; width: 0.2; height: 0.07"
@@ -145,7 +134,9 @@
 
         </a-entity>
 
-        <a-sky color="#000"></a-sky>
+        <a-sky color="#000000" material="" geometry=""></a-sky>
+
+        <script src="/assets/js/app.js"></script>
 
     </a-scene>
 
