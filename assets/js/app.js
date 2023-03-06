@@ -1,6 +1,8 @@
 let bot = document.querySelector("#bot")
 let actionButtons = document.querySelectorAll(".actionButtons")
 let startListening = false
+let QUESTION_ANSWER_SPACE_ENDPOINT =
+	"https://currentlyexhausted-mariorossi-t5-base-finetuned-que-ac173dd.hf.space/run/predict"
 
 bot.addEventListener("click", function () {
 	for (let i = 0; i < actionButtons.length; i++) {
@@ -67,3 +69,13 @@ function textToSpeech(text) {
 	window.speechSynthesis.speak(msg)
 }
 
+async function query(data) {
+	const response = await fetch(QUESTION_ANSWER_SPACE_ENDPOINT, {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(data),
+	})
+
+	const result = await response.json()
+	return result
+}
