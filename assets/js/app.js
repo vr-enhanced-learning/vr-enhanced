@@ -51,3 +51,19 @@ speechToText(
 	document.querySelector("#questionInputField")
 )
 
+function textToSpeech(text) {
+	let msg = new SpeechSynthesisUtterance()
+
+	let voices = window.speechSynthesis.getVoices()
+
+	voices.forEach((voice) => {
+		if (voice.name === "Google US English") {
+			msg.voice = voice
+		}
+	})
+
+	msg.text = text
+	msg.lang = "en-US"
+	window.speechSynthesis.speak(msg)
+}
+
