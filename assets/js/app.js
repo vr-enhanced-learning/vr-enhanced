@@ -1,5 +1,6 @@
 let bot = document.querySelector("#bot")
 let actionButtons = document.querySelectorAll(".actionButtons")
+let clearButton = document.querySelector("#clearButton")
 let answerButton = document.querySelector("#answerButton")
 
 let startListening = false
@@ -118,4 +119,16 @@ answerButton.addEventListener("click", async function () {
 			"value: " + answer + " (took " + predictionTime + " seconds)"
 		)
 	textToSpeech(answer)
+})
+
+clearButton.addEventListener("click", function () {
+    document
+        .querySelector("#contextInputField")
+        .setAttribute("text", "value: Context")
+    document
+        .querySelector("#questionInputField")
+        .setAttribute("text", "value: Question")
+    document
+        .querySelector("#answerInputField")
+        .setAttribute("text", "value: Generated Answer")
 })
