@@ -25,6 +25,12 @@
         <a-assets id="assets">
             <a-asset-item id="botModel" src="./assets/models/eve_wall-e__eva.glb">
             </a-asset-item>
+
+            <img id="answerIcon" title="Answer Icon" src="./assets/images/answer.png">
+            <img id="contextIcon" title="Context Icon" src="./assets/images/context.png">
+            <img id="questionIcon" title="Question Icon" src="./assets/images/question.png">
+            <img id="clearIcon" title="Clear Icon" src="./assets/images/clear.png">
+
         </a-assets>
 
         <a-plane class="groundPlane" scale="2 2 2" color="#333" width="8" height="8" rotation="-90 0 0" material=""
@@ -96,57 +102,11 @@
             material="emissive: #000000">
         </a-entity>
 
-        <a-entity id="contextButton" position="0.36019 1.38188 -0.8" rotation="" raycaster-target="canGrab: true"
-            geometry="primitive: plane; width: 0.2; height: 0.07"
-            material="color: #014180; transparent: true; opacity: 0.5; side: double; emissive: #000000" scale=""
-            visible="false" class="navButton actionButtons raycaster-target">
+        <a-image class="navButton actionButtons raycaster-target" visible="false" id="contextButton" src="#contextIcon" position="0.41688 1.40298 -0.8" scale="0.15 0.15 0.15" material="" geometry=""></a-image>
+        <a-image class="navButton actionButtons raycaster-target" visible="false" id="questionButton" src="#questionIcon" position="0.60187 1.40298 -0.8" scale="0.15 0.15 0.15" material="" geometry=""></a-image>
+        <a-image class="navButton actionButtons raycaster-target" visible="false" id="answerButton" src="#answerIcon" position="0.43188 1.21975 -0.8" scale="0.15 0.15 0.15" material="" geometry=""></a-image>
+        <a-image class="navButton actionButtons raycaster-target" visible="false" id="clearButton" src="#clearIcon" position="0.60942 1.2146 -0.8" scale="0.15 0.15 0.15" material="" geometry=""></a-image>
 
-            <a-text value="Context" position="-0.013 0.007 0.01" scale="" color="#FFFFFF" align="center" width="0.2"
-                wrap-count="120" z-offset="0.01" class="navButton raycaster-target" raycaster-target=""
-                material="emissive: #000000" text="width: 2.19; height: -0.1">
-
-            </a-text>
-
-        </a-entity>
-
-        <a-entity id="questionButton" position="0.57838 1.38188 -0.8" rotation="" raycaster-target="canGrab: true"
-            geometry="primitive: plane; width: 0.2; height: 0.07"
-            material="color: #8e44ad; transparent: true; opacity: 0.5; side: double; emissive: #000000" scale=""
-            visible="false" class="navButton actionButtons raycaster-target">
-
-            <a-text value="Question" position="-0.013 0.007 0.01" scale="" color="#FFFFFF" align="center" width="0.2"
-                wrap-count="120" z-offset="0.01" class="navButton raycaster-target" raycaster-target=""
-                material="emissive: #000000" text="width: 2.19; height: -0.1">
-
-            </a-text>
-
-        </a-entity>
-
-        <a-entity id="answerButton" position="0.36711 1.28833 -0.8" rotation="" raycaster-target="canGrab: true"
-            geometry="primitive: plane; width: 0.2; height: 0.07"
-            material="color: #B53471; transparent: true; opacity: 0.5; side: double; emissive: #000000" scale=""
-            visible="false" class="navButton actionButtons raycaster-target">
-
-            <a-text value="Get Answer" position="-0.013 0.007 0.01" scale="" color="#FFFFFF" align="center" width="0.2"
-                wrap-count="120" z-offset="0.01" class="navButton raycaster-target" raycaster-target=""
-                material="emissive: #000000" text="width: 2.19; height: -0.1">
-
-            </a-text>
-
-        </a-entity>
-
-        <a-entity id="clearButton" position="0.57838 1.28833 -0.8" rotation="" raycaster-target="canGrab: true"
-            geometry="primitive: plane; width: 0.2; height: 0.07"
-            material="color: #c0392b; transparent: true; opacity: 0.5; side: double; emissive: #000000" scale=""
-            visible="false" class="navButton actionButtons raycaster-target">
-
-            <a-text value="Clear" position="-0.013 0.007 0.01" scale="" color="#FFFFFF" align="center" width="0.2"
-                wrap-count="120" z-offset="0.01" class="navButton raycaster-target" raycaster-target=""
-                material="emissive: #000000" text="width: 2.19; height: -0.1">
-
-            </a-text>
-
-        </a-entity>
 
         <a-sky src="sky.jpg" material="" geometry=""></a-sky>
 
