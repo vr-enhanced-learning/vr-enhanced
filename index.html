@@ -23,7 +23,8 @@
 
         <!-- Assets preload -->
         <a-assets id="assets">
-            <a-asset-item id="baymax" src="./assets/models/retsuko_from_aggretsuko_for_vr_chat.glb"></a-asset-item>
+            <a-asset-item id="botModel" src="./assets/models/eve_wall-e__eva.glb">
+            </a-asset-item>
         </a-assets>
 
         <a-plane class="groundPlane" scale="2 2 2" color="#333" width="8" height="8" rotation="-90 0 0" material=""
@@ -90,8 +91,8 @@
 
         </a-entity>
 
-        <a-entity id="bot" gltf-model="#baymax" position="0.55975 1.45858 -0.83611" scale="0.25 0.3 0.3"
-            rotation="0 -29.999999999999996 0" raycaster-target="canGrab: true" class="navButton raycaster-target"
+        <a-entity id="bot" gltf-model="#botModel" position="0.43915 1.68656 -0.68294" scale="0.1 0.1 0.1"
+            rotation="35 -35 0" raycaster-target="canGrab: true" class="navButton raycaster-target"
             material="emissive: #000000">
         </a-entity>
 
