@@ -23,8 +23,6 @@
 
         <!-- Assets preload -->
         <a-assets id="assets">
-            <a-asset-item id="botModel" src="./assets/models/eve_wall-e__eva.glb">
-            </a-asset-item>
 
             <img id="answerIcon" title="Answer Icon" src="./assets/images/answer.png">
             <img id="contextIcon" title="Context Icon" src="./assets/images/context.png">
@@ -97,10 +95,11 @@
 
         </a-entity>
 
-        <a-entity id="bot" gltf-model="#botModel" position="0.43915 1.68656 -0.68294" scale="0.1 0.1 0.1"
-            rotation="35 -35 0" raycaster-target="canGrab: true" class="navButton raycaster-target"
-            material="emissive: #000000">
-        </a-entity>
+        <a-image class="navButton actionButtons raycaster-target" id="contextButton" src="#contextIcon" position="0.41688 1.81335 -0.8" scale="0.15 0.15 0.15" material="" geometry=""></a-image>
+        <a-image class="navButton actionButtons raycaster-target" id="questionButton" src="#questionIcon" position="0.60187 1.81002 -0.8" scale="0.15 0.15 0.15" material="" geometry=""></a-image>
+        <a-image class="navButton actionButtons raycaster-target" id="answerButton" src="#answerIcon" position="0.41721 1.61946 -0.8" scale="0.15 0.15 0.15" material="" geometry=""></a-image>
+        <a-image class="navButton actionButtons raycaster-target" id="clearButton" src="#clearIcon" position="0.60357 1.62094 -0.8" scale="0.15 0.15 0.15" material="" geometry=""></a-image>
+
 
         <a-image class="navButton actionButtons raycaster-target" visible="false" id="contextButton" src="#contextIcon" position="0.41688 1.40298 -0.8" scale="0.15 0.15 0.15" material="" geometry=""></a-image>
         <a-image class="navButton actionButtons raycaster-target" visible="false" id="questionButton" src="#questionIcon" position="0.60187 1.40298 -0.8" scale="0.15 0.15 0.15" material="" geometry=""></a-image>
