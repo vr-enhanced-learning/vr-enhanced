@@ -1,6 +1,5 @@
 let actionButtons = document.querySelectorAll(".actionButtons")
 let statusField = document.querySelector("#statusField")
-let clearButton = document.querySelector("#clearButton")
 let answerButton = document.querySelector("#answerButton")
 let stopListeningButton = document.querySelector("#stopListeningButton")
 
@@ -13,8 +12,8 @@ function setStatus(text) {
 	statusField.setAttribute("text", "value: " + text)
 }
 
+function speechToText(button, inputField, statusText) {
 	let context = ""
-	startListening = true
 	let speechRecognition = new webkitSpeechRecognition()
 	speechRecognition.continuous = true
 	speechRecognition.interimResults = true
@@ -34,22 +33,40 @@ function setStatus(text) {
 			}
 		}
 	}
+
 	button.addEventListener("click", function () {
-		startListening = true
+		context = ""
+		inputField.setAttribute("text", "value: ")
+		setStatus(statusText)
 		stopListeningButton.setAttribute("visible", "true")
 		speechRecognition.start()
 	})
-	return speechRecognition
+
+	return {speech: speechRecognition, inputField}
+}
+
+function stopListening(listenerObject, changeAttribute = false) {
+	listenerObject.speech.stop()
+	if(changeAttribute) listenerObject.inputField.setAttribute("text", "value: ")
+}
+
+function stopListentingUI(changeAttribute = true) {
+	stopListeningButton.setAttribute("visible", "false")
+	stopListening(contextListener, changeAttribute)
+	stopListening(questionListener, changeAttribute)
+	setStatus("Stopped listening")
 }
 
 let contextListener = speechToText(
 	document.querySelector("#contextButton"),
-	document.querySelector("#contextInputField")
+	document.querySelector("#contextInputField"),
+	"Listening to context"
 )
 
 let questionListener = speechToText(
 	document.querySelector("#questionButton"),
-	document.querySelector("#questionInputField")
+	document.querySelector("#questionInputField"),
+	"Listening to question"
 )
 
 function textToSpeech(text) {
@@ -85,10 +102,10 @@ function constructQuery(context, question) {
 	}
 }
 
-answerButton.addEventListener("click", async function () {
-	
-	stopListeningButton.click() // stop listening if user clicks on answer button
-	
+answerButton.addEventListener("click", async () => {
+	stopListentingUI(false)
+	setStatus("Parsing question and context...")
+
 	let context = document
 		.querySelector("#contextInputField")
 		.getAttribute("text").value
@@ -102,11 +119,14 @@ answerButton.addEventListener("click", async function () {
 	textToSpeech("Generating.... Please wait")
 
 	let queryData = constructQuery(context, question)
+
+	setStatus("Generating answer...Please wait")
 	let result = await query(queryData)
 	console.log(result)
 
+	setStatus("Answer generated!")
 	let answer = result.data[0]
-	let predictionTime = result.duration
+	let predictionTime = result.duration.toFixed(2)
 
 	document
 		.querySelector("#answerInputField")
@@ -117,16 +137,8 @@ answerButton.addEventListener("click", async function () {
 	textToSpeech(answer)
 })
 
-clearButton.addEventListener("click", function () {
-    document
-        .querySelector("#contextInputField")
-        .setAttribute("text", "value: Context")
-    document
-        .querySelector("#questionInputField")
-        .setAttribute("text", "value: Question")
-    document
-        .querySelector("#answerInputField")
-        .setAttribute("text", "value: Generated Answer")
+stopListeningButton.addEventListener("click", () => {
+	stopListentingUI()
 })
 
 setStatus(WELCOME_STATUS_TEXT)
