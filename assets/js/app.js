@@ -1,8 +1,8 @@
 let actionButtons = document.querySelectorAll(".actionButtons")
 let clearButton = document.querySelector("#clearButton")
 let answerButton = document.querySelector("#answerButton")
+let stopListeningButton = document.querySelector("#stopListeningButton")
 
-let startListening = false
 let QUESTION_ANSWER_SPACE_ENDPOINT =
 	"https://currentlyexhausted-mariorossi-t5-base-finetuned-que-ac173dd.hf.space/run/predict"
 
@@ -36,11 +36,12 @@ function speechToText(button, inputField) {
 	return speechRecognition
 }
 
-speechToText(
+let contextListener = speechToText(
 	document.querySelector("#contextButton"),
 	document.querySelector("#contextInputField")
 )
-speechToText(
+
+let questionListener = speechToText(
 	document.querySelector("#questionButton"),
 	document.querySelector("#questionInputField")
 )
@@ -78,10 +79,10 @@ function constructQuery(context, question) {
 	}
 }
 
-
-
 answerButton.addEventListener("click", async function () {
-	startListening = false
+	
+	stopListeningButton.click() // stop listening if user clicks on answer button
+	
 	let context = document
 		.querySelector("#contextInputField")
 		.getAttribute("text").value
@@ -120,4 +121,10 @@ clearButton.addEventListener("click", function () {
     document
         .querySelector("#answerInputField")
         .setAttribute("text", "value: Generated Answer")
+})
+
+stopListeningButton.addEventListener("click", function () {
+	stopListeningButton.setAttribute("visible", "false")
+	contextListener.stop()
+	questionListener.stop()
 })
