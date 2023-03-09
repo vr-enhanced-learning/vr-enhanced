@@ -56,6 +56,17 @@
         <a-entity position="0 0 0" cursor="fuse: false; rayOrigin: mouse;" raycaster="objects: .navButton">
         </a-entity>
 
+        <a-entity id="statusWindow" position="-0.29437 2.00906 -0.8" rotation="" raycaster-target="canGrab: true"
+            geometry="primitive: plane; height: 0.1" material="color: #000; side: double; emissive: #000000"
+            scale="1 1 0.00001">
+
+            <a-entity id="statusField" position="0.00362 0.00367 499.68659" scale="0.5 0.5 0.5"
+                text="value: Loading...; color: #00FF00; width: 1.74; wrapCount: 62.65; zOffset: 0.01"
+                raycaster-target="" material="emissive: #000000; color: #00FF00">
+
+            </a-entity>
+
+        </a-entity>
 
         <a-entity id="contextWindow" position="-0.29438 1.78596 -0.8" rotation="" raycaster-target="canGrab: true"
             geometry="primitive: plane; width: 1; height: 0.28"
