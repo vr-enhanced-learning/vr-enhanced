@@ -1,4 +1,5 @@
 let actionButtons = document.querySelectorAll(".actionButtons")
+let statusField = document.querySelector("#statusField")
 let clearButton = document.querySelector("#clearButton")
 let answerButton = document.querySelector("#answerButton")
 let stopListeningButton = document.querySelector("#stopListeningButton")
@@ -6,7 +7,12 @@ let stopListeningButton = document.querySelector("#stopListeningButton")
 let QUESTION_ANSWER_SPACE_ENDPOINT =
 	"https://currentlyexhausted-mariorossi-t5-base-finetuned-que-ac173dd.hf.space/run/predict"
 
-function speechToText(button, inputField) {
+let WELCOME_STATUS_TEXT = "Tap on 'Create Context' or 'Create Question' to start..."
+
+function setStatus(text) {
+	statusField.setAttribute("text", "value: " + text)
+}
+
 	let context = ""
 	startListening = true
 	let speechRecognition = new webkitSpeechRecognition()
@@ -123,8 +129,4 @@ clearButton.addEventListener("click", function () {
         .setAttribute("text", "value: Generated Answer")
 })
 
-stopListeningButton.addEventListener("click", function () {
-	stopListeningButton.setAttribute("visible", "false")
-	contextListener.stop()
-	questionListener.stop()
-})
+setStatus(WELCOME_STATUS_TEXT)
