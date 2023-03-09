@@ -12,6 +12,7 @@
     <script src="./assets/js/raycaster-extras.js"></script>
     <script src="./assets/js/controller-listener.js"></script>
     <script src="./assets/js/player-move.js"></script>
+    <script src="./assets/js/gradientsky.min.js"></script>
     <!-- A-Frame GLTF Exporter -->
     <link rel="stylesheet" href="./assets/css/style.css">
 
@@ -100,14 +101,7 @@
         <a-image class="navButton actionButtons raycaster-target" id="answerButton" src="#answerIcon" position="0.41721 1.61946 -0.8" scale="0.15 0.15 0.15" material="" geometry=""></a-image>
         <a-image class="navButton actionButtons raycaster-target" id="clearButton" src="#clearIcon" position="0.60357 1.62094 -0.8" scale="0.15 0.15 0.15" material="" geometry=""></a-image>
 
-
-        <a-image class="navButton actionButtons raycaster-target" visible="false" id="contextButton" src="#contextIcon" position="0.41688 1.40298 -0.8" scale="0.15 0.15 0.15" material="" geometry=""></a-image>
-        <a-image class="navButton actionButtons raycaster-target" visible="false" id="questionButton" src="#questionIcon" position="0.60187 1.40298 -0.8" scale="0.15 0.15 0.15" material="" geometry=""></a-image>
-        <a-image class="navButton actionButtons raycaster-target" visible="false" id="answerButton" src="#answerIcon" position="0.43188 1.21975 -0.8" scale="0.15 0.15 0.15" material="" geometry=""></a-image>
-        <a-image class="navButton actionButtons raycaster-target" visible="false" id="clearButton" src="#clearIcon" position="0.60942 1.2146 -0.8" scale="0.15 0.15 0.15" material="" geometry=""></a-image>
-
-
-        <a-sky src="sky.jpg" material="" geometry=""></a-sky>
+        <a-sky material="shader: gradient; bottomColor: 0 121 255; offset: 100" geometry="radius: 1000"></a-sky>
 
         <script src="/assets/js/app.js"></script>
 
