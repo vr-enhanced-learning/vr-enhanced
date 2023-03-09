@@ -14,9 +14,6 @@ function speechToText(button, inputField) {
 	speechRecognition.interimResults = true
 	speechRecognition.lang = "en-US"
 	speechRecognition.onresult = function (event) {
-		if (startListening == false) {
-			speechRecognition.stop()
-		}
 		let interimTranscript = ""
 		for (let i = event.resultIndex; i < event.results.length; i++) {
 			if (event.results[i].isFinal) {
@@ -32,8 +29,11 @@ function speechToText(button, inputField) {
 		}
 	}
 	button.addEventListener("click", function () {
+		startListening = true
+		stopListeningButton.setAttribute("visible", "true")
 		speechRecognition.start()
 	})
+	return speechRecognition
 }
 
 speechToText(
