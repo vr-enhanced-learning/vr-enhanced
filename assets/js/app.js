@@ -1,4 +1,3 @@
-let bot = document.querySelector("#bot")
 let actionButtons = document.querySelectorAll(".actionButtons")
 let clearButton = document.querySelector("#clearButton")
 let answerButton = document.querySelector("#answerButton")
@@ -6,16 +5,6 @@ let answerButton = document.querySelector("#answerButton")
 let startListening = false
 let QUESTION_ANSWER_SPACE_ENDPOINT =
 	"https://currentlyexhausted-mariorossi-t5-base-finetuned-que-ac173dd.hf.space/run/predict"
-
-bot.addEventListener("click", function () {
-	for (let i = 0; i < actionButtons.length; i++) {
-		if (actionButtons[i].getAttribute("visible") == true) {
-			actionButtons[i].setAttribute("visible", false)
-		} else {
-			actionButtons[i].setAttribute("visible", true)
-		}
-	}
-})
 
 function speechToText(button, inputField) {
 	let context = ""
