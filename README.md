@@ -1,4 +1,4 @@
-Quantum Extendable Transformer Powered VR Video Bot
+Enhancing Education with Machine Learning and VR 
 
 ## First Review
 - [x] Create a new transformer model for answer generation with context and questions
