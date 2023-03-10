@@ -50,7 +50,7 @@ function stopListening(listenerObject, changeAttribute = false) {
 	if(changeAttribute) listenerObject.inputField.setAttribute("text", "value: ")
 }
 
-function stopListentingUI(changeAttribute = true) {
+function stopListentingUI(changeAttribute = false) {
 	stopListeningButton.setAttribute("visible", "false")
 	stopListening(contextListener, changeAttribute)
 	stopListening(questionListener, changeAttribute)
