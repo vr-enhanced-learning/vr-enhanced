@@ -147,28 +147,7 @@ setStatus(WELCOME_STATUS_TEXT)
 
 let context = `At the most basic level, a scene is presented in 3D by computing the perspective to apply to the scene in order to render it from the viewpoint of each of the user's eyes by computing the position of each eye and rendering the scene from that position, looking in the direction the user is currently facing. Each of these two images is rendered into a single framebuffer, with the left eye's rendered image on the left and the right eye's viewpoint rendered into the right half of the buffer.`
 
-let question = `What is the most basic level of a scene?`
-
-// // with a set timeout of 1 second, add the context to contextInputField letter by letter
-// setTimeout(() => {
-// 	let i = 0
-// 	let interval = setInterval(() => {
-// 		let currentText = contextInputField.getAttribute("text").value
-// 		contextInputField.setAttribute("text", "value: " + currentText + context[i])
-// 		i++
-// 		if (i === context.length) clearInterval(interval)
-// 	}, 100)
-// }, 1000)
-
-// setTimeout(() => {
-// 	let i = 0
-// 	let interval = setInterval(() => {
-// 		let currentText = questionInputField.getAttribute("text").value
-// 		questionInputField.setAttribute("text", "value: " + currentText + question[i])
-// 		i++
-// 		if (i === question.length) clearInterval(interval)
-// 	}, 100)
-// }, 2000)
+let question = `What is presented in 3D?`
 
 setTimeout(() => {
 	let contextWords = context.split(" ")
@@ -208,4 +187,4 @@ setTimeout(() => {
 		i++
 		if (i === questionWords.length) clearInterval(interval)
 	}, 150)
-}, 10000)
+}, 15000)
