@@ -6,7 +6,8 @@ let stopListeningButton = document.querySelector("#stopListeningButton")
 let QUESTION_ANSWER_SPACE_ENDPOINT =
 	"https://currentlyexhausted-mariorossi-t5-base-finetuned-que-ac173dd.hf.space/run/predict"
 
-let WELCOME_STATUS_TEXT = "Tap on 'Create Context' or 'Create Question' to start..."
+let WELCOME_STATUS_TEXT =
+	"Tap on 'Create Context' or 'Create Question' to start..."
 
 function setStatus(text) {
 	statusField.setAttribute("text", "value: " + text)
@@ -42,12 +43,13 @@ function speechToText(button, inputField, statusText) {
 		speechRecognition.start()
 	})
 
-	return {speech: speechRecognition, inputField}
+	return { speech: speechRecognition, inputField }
 }
 
 function stopListening(listenerObject, changeAttribute = false) {
 	listenerObject.speech.stop()
-	if(changeAttribute) listenerObject.inputField.setAttribute("text", "value: ")
+	if (changeAttribute)
+		listenerObject.inputField.setAttribute("text", "value: ")
 }
 
 function stopListentingUI(changeAttribute = false) {
@@ -142,3 +144,68 @@ stopListeningButton.addEventListener("click", () => {
 })
 
 setStatus(WELCOME_STATUS_TEXT)
+
+let context = `At the most basic level, a scene is presented in 3D by computing the perspective to apply to the scene in order to render it from the viewpoint of each of the user's eyes by computing the position of each eye and rendering the scene from that position, looking in the direction the user is currently facing. Each of these two images is rendered into a single framebuffer, with the left eye's rendered image on the left and the right eye's viewpoint rendered into the right half of the buffer.`
+
+let question = `What is the most basic level of a scene?`
+
+// // with a set timeout of 1 second, add the context to contextInputField letter by letter
+// setTimeout(() => {
+// 	let i = 0
+// 	let interval = setInterval(() => {
+// 		let currentText = contextInputField.getAttribute("text").value
+// 		contextInputField.setAttribute("text", "value: " + currentText + context[i])
+// 		i++
+// 		if (i === context.length) clearInterval(interval)
+// 	}, 100)
+// }, 1000)
+
+// setTimeout(() => {
+// 	let i = 0
+// 	let interval = setInterval(() => {
+// 		let currentText = questionInputField.getAttribute("text").value
+// 		questionInputField.setAttribute("text", "value: " + currentText + question[i])
+// 		i++
+// 		if (i === question.length) clearInterval(interval)
+// 	}, 100)
+// }, 2000)
+
+setTimeout(() => {
+	let contextWords = context.split(" ")
+	let i = 0
+	document
+			.querySelector("#contextInputField").setAttribute("text", "value: ")
+	let interval = setInterval(() => {
+		let currentContext = document
+			.querySelector("#contextInputField")
+			.getAttribute("text").value
+		document
+			.querySelector("#contextInputField")
+			.setAttribute(
+				"text",
+				"value: " + currentContext + " " + contextWords[i]
+			)
+		i++
+		if (i === contextWords.length) clearInterval(interval)
+	}, 150)
+}, 1000)
+
+setTimeout(() => {
+	let questionWords = question.split(" ")
+	let i = 0
+	document
+			.querySelector("#questionInputField").setAttribute("text", "value: ")
+	let interval = setInterval(() => {
+		let currentContext = document
+			.querySelector("#questionInputField")
+			.getAttribute("text").value
+		document
+			.querySelector("#questionInputField")
+			.setAttribute(
+				"text",
+				"value: " + currentContext + " " + questionWords[i]
+			)
+		i++
+		if (i === questionWords.length) clearInterval(interval)
+	}, 150)
+}, 10000)
