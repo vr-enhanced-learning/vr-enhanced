@@ -2,128 +2,38 @@
 <html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Basic A-Frame for VR - Meta Quest</title>
+    <meta charset="utf-8">
+    <title>VR Based Education</title>
+    <meta name="description" content="Web2VR">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="./assets/js/aframe.min.js"></script>
-    <script src="./assets/js/htmlembed.js"></script>
-
-    <!-- New Navigation -->
-    <script src="./assets/js/raycaster-extras.js"></script>
-    <script src="./assets/js/controller-listener.js"></script>
-    <script src="./assets/js/player-move.js"></script>
+    <script src="./assets/js/quickxr.js"></script>
     <script src="./assets/js/gradientsky.min.js"></script>
-    <!-- A-Frame GLTF Exporter -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
 
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
+    <div id="html-container">
+        <p>
+            <b>Welcome to VR Education</b>
+        </p>
+    </div>
 
-    <a-scene gltf-model="dracoDecoderPath: decoder/" loading-screen="enabled: false">
-
-        <!-- Assets preload -->
-        <a-assets id="assets">
-
-            <img id="answerIcon" title="Answer Icon" src="./assets/images/answer.png">
-            <img id="contextIcon" title="Context Icon" src="./assets/images/context.png">
-            <img id="questionIcon" title="Question Icon" src="./assets/images/question.png">
-            <img id="clearIcon" title="Clear Icon" src="./assets/images/clear.png">
-            <img id="stopListeningIcon" title="Clear Icon" src="./assets/images/stopmic.png">
-
-        </a-assets>
-
-        <a-plane class="groundPlane" scale="2 2 2" color="#333" width="8" height="8" rotation="-90 0 0" material=""
-            geometry="" position="0 0.01 0" visible="false"></a-plane>
-
-        <!-- Player -->
-        <a-entity id="player" position="-0.284 0.154 -0.247" player-move="controllerListenerId: #controller-data;
-              navigationMeshClass: groundPlane;">
-            <a-camera></a-camera>
-            <a-entity id="controller-data"
-                controller-listener="leftControllerId:  #left-controller; rightControllerId: #right-controller;">
-            </a-entity>
-            <a-entity id="left-controller" oculus-touch-controls="hand: left">
-            </a-entity>
-            <!-- experiment with raycasting interval; slight performance improvement but jittery appearance in world -->
-            <a-entity id="right-controller" oculus-touch-controls="hand: right" laser-controls="hand: right"
-                raycaster="objects: .raycaster-target, .navButton, .groundPlane; interval: 0;"
-                raycaster-extras="controllerListenerId: #controller-data; beamImageSrc: #gradient; beamLength: 0.5;">
-            </a-entity>
-        </a-entity>
-
-        <!-- Click events for mouse/laser-controls -->
-        <a-entity position="0 0 0" cursor="fuse: false; rayOrigin: mouse;" raycaster="objects: .navButton">
-        </a-entity>
-
-        <a-entity id="statusWindow" position="-0.29437 2.00906 -0.8" rotation="" raycaster-target="canGrab: true"
-            geometry="primitive: plane; height: 0.1" material="color: #000; side: double; emissive: #000000"
-            scale="1 1 0.00001">
-
-            <a-entity id="statusField" position="0.00362 0.00367 499.68659" scale="0.5 0.5 0.5"
-                text="value: Loading...; color: #00FF00; width: 1.74; wrapCount: 62.65; zOffset: 0.01"
-                raycaster-target="" material="emissive: #000000; color: #00FF00">
-
-            </a-entity>
-
-        </a-entity>
-
-        <a-entity id="contextWindow" position="-0.29438 1.78596 -0.8" rotation="" raycaster-target="canGrab: true"
-            geometry="primitive: plane; width: 1; height: 0.28"
-            material="color: #FFFFFF; side: double; emissive: #000000" scale="" class="navButton raycaster-target">
-
-            <a-entity id="contextInputField" position="0.02088 0.007 0.05661" scale="0.5 0.5 0.5"
-                text="value: Context; color: #000000; width: 1.74; wrapCount: 62.65; zOffset: 0.01"
-                class="navButton raycaster-target" raycaster-target="" material="emissive: #000000">
-
-            </a-entity>
-
-
-        </a-entity>
-
-        <a-entity id="questionWindow" position="-0.29438 1.57593 -0.8" rotation="" raycaster-target="canGrab: true"
-            geometry="primitive: plane; width: 1; height: 0.1"
-            material="color: #FFFFFF; side: double; emissive: #000000" scale="" class="navButton raycaster-target">
-
-            <a-entity id="questionInputField" position="0.02088 0.007 0.05661" scale="0.5 0.5 0.5"
-                text="value: Question; color: #000000; width: 1.74; wrapCount: 62.65; zOffset: 0.01"
-                class="navButton raycaster-target" raycaster-target="" material="emissive: #000000">
-
-            </a-entity>
-
-        </a-entity>
-
-        <a-entity id="answerWindow" position="-0.29437 1.44078 -0.8" rotation="" raycaster-target="canGrab: true"
-            geometry="primitive: plane; height: 0.1" material="color: #FFFFFF; side: double; emissive: #000000" scale=""
-            class="navButton raycaster-target">
-
-            <a-entity id="answerInputField" position="0.02088 0.02059 0.05661" scale="0.5 0.5 0.5"
-                text="value: Generated Answer; color: #000000; width: 1.74; wrapCount: 62.65; zOffset: 0.01"
-                class="navButton raycaster-target" raycaster-target="" material="emissive: #000000">
-
-            </a-entity>
-
-        </a-entity>
-
-        <a-image class="navButton raycaster-target actionButtons" raycaster-target="" id="contextButton" src="#contextIcon"
-            position="-1.04797 1.80296 -0.8" scale="0.25 0.25 0.25" material="" geometry=""></a-image>
-
-        <a-image class="navButton raycaster-target actionButtons" raycaster-target="" id="questionButton" src="#questionIcon"
-            position="-1.051 1.51876 -0.8" scale="0.25 0.25 0.25" material="" geometry=""></a-image>
-
-        <a-image class="navButton raycaster-target actionButtons" raycaster-target="" id="answerButton" src="#answerIcon"
-            position="0.43799 1.79964 -0.8" scale="0.25 0.25 0.25" material="" geometry=""></a-image>
-
-        <a-image class="navButton raycaster-target actionButtons" raycaster-target="" visible="false" id="stopListeningButton" src="#stopListeningIcon"
-            position="0.43533 1.51651 -0.8" scale="0.25 0.25 0.25" material="" geometry=""></a-image>
-
+    <a-scene renderer="colorManagement:true;" shadow="type: pcfsoft">
         <a-sky material="shader: gradient; bottomColor: 0 121 255; offset: 100" geometry="radius: 1000"></a-sky>
-
-        <script src="/assets/js/app.js"></script>
-
     </a-scene>
 
+    <script>
+        const web2vr = new Web2VR("#html-container", {
+            position: {
+                x: 0,
+                y: 1.7,
+                z: -0.5
+            },
+        });
+        web2vr.start();
+    </script>
 </body>
 
 </html>
