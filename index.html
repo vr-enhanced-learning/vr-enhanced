@@ -58,9 +58,15 @@
 
                 document.getElementById("formContainer").innerHTML = ""
 
-                let videoTag = `<video id="video" src="https://relay-youtube.adaptable.app/${videoId}" width="640" height="360" controls crossorigin></video>`
+                let videoTag = document.createElement("video")
+                videoTag.id = "video"
+                videoTag.src = `https://relay-youtube.adaptable.app/${videoId}`
+                videoTag.width = 640
+                videoTag.height = 360
+                videoTag.controls = true
+                videoTag.crossOrigin = "anonymous"
 
-                document.getElementById("content").innerHTML = videoTag
+                document.getElementById("content").appendChild(videoTag)
 
                 document.getElementById("liveStatus").innerHTML = `Status: Generating Questions...`
 
@@ -79,17 +85,34 @@
 
                 document.getElementById("liveStatus").innerHTML = `Status: Questions Generated`
 
-                let questionsHTML = `<div id="questionsContainer">`
-                questionsHTML += `<div id="questions">`
-                questions.forEach((question, index) => {
-                    questionsHTML += `<span>${question}</span>`
-                    questionsHTML += `<input type="text" data-id="${index + 1}" placeholder="Enter Answer" />`
-                })
-                questionsHTML += `</div>`
-                questionsHTML += `<button id="submitAnswer" type="button">Submit</button>`
-                questionsHTML += `</div>`
+                let questionsContainer = document.createElement("div")
+                questionsContainer.id = "questionsContainer"
 
-                document.getElementById("content").innerHTML += questionsHTML
+                let questionsDiv = document.createElement("div")
+                questionsDiv.id = "questions"
+
+                questions.forEach((question, index) => {
+                    let questionSpan = document.createElement("span")
+                    questionSpan.innerHTML = question
+
+                    let answerInput = document.createElement("input")
+                    answerInput.type = "text"
+                    answerInput.placeholder = "Enter Answer"
+                    answerInput.dataset.id = index + 1
+
+                    questionsDiv.appendChild(questionSpan)
+                    questionsDiv.appendChild(answerInput)
+                })
+
+                let submitAnswerButton = document.createElement("button")
+                submitAnswerButton.id = "submitAnswer"
+                submitAnswerButton.type = "button"
+                submitAnswerButton.innerHTML = "Submit"
+
+                questionsContainer.appendChild(questionsDiv)
+                questionsContainer.appendChild(submitAnswerButton)
+
+                document.getElementById("content").appendChild(questionsContainer)
 
 
             }
