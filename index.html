@@ -65,6 +65,10 @@
             let formContainer = document.querySelector(".formContainer")
             formContainer.innerHTML = ""
         }
+
+        function videoHTML(videoId) {
+            return `<video id="video" src="https://relay-youtube.cyclic.app/${videoId}" width="640" height="360" controls crossorigin></video>`
+        }
     </script>
 </body>
 
