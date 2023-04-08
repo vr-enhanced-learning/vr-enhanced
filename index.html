@@ -96,6 +96,10 @@
             let response = await request.json()
             return response
         }
+
+        async function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
     </script>
 </body>
 
