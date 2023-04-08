@@ -19,7 +19,7 @@
         <h1>VR-Based Education With STIR and TURB</h1>
 
         <div id="formContainer">
-            <input type="text" id="videoId" placeholder="Enter Youtube Video ID" value="" />
+            <input type="text" id="videoId" placeholder="Enter Youtube Video ID" value="AKJfakEsgy0" />
             <button id="submitYoutubeId" type="button">Submit</button>
         </div>
 
@@ -28,6 +28,8 @@
         <div id="content">
 
         </div>
+
+        <button id="submitAnswer" type="button">Submit</button>
 
 
     </div>
@@ -48,7 +50,21 @@
         })
         web2vr.start()
 
-        // load the video if the button is pressed
+        document.getElementById("submitAnswer").addEventListener("click", async () => {
+
+            let answers = []
+
+            document.querySelectorAll("#questions input").forEach((input) => {
+                answers.push({
+                    "questionId": input.dataset.id,
+                    "answer": input.value
+                })
+            })
+
+            console.log(answers)
+
+        })
+
         document.getElementById("submitYoutubeId").addEventListener("click", async () => {
 
 
@@ -104,13 +120,7 @@
                     questionsDiv.appendChild(answerInput)
                 })
 
-                let submitAnswerButton = document.createElement("button")
-                submitAnswerButton.id = "submitAnswer"
-                submitAnswerButton.type = "button"
-                submitAnswerButton.innerHTML = "Submit"
-
                 questionsContainer.appendChild(questionsDiv)
-                questionsContainer.appendChild(submitAnswerButton)
 
                 document.getElementById("content").appendChild(questionsContainer)
 
