@@ -48,6 +48,12 @@ button {
     cursor: pointer;
 }
 
+#liveStatus {
+    font-size: 12px;
+    font-weight: 700;
+    color: #FFF;
+    text-shadow: 0 0 10px #000;
+}
     display: flex;
     align-items: center;
     justify-content: center;
