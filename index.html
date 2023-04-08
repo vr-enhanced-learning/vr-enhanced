@@ -69,6 +69,19 @@
         function videoHTML(videoId) {
             return `<video id="video" src="https://relay-youtube.cyclic.app/${videoId}" width="640" height="360" controls crossorigin></video>`
         }
+
+        function questionsHTML(questions) {
+            let html = `<div class="questionsContainer">`
+            html += `<div class="questions">`
+            questions.forEach((question, index) => {
+                html += `<span>${question}</span>`
+                html += `<input type="text" data-id="${index + 1}" placeholder="Enter Answer" />`
+            })
+            html += `</div>`
+            html += `<button id="submitAnswer" type="button">Submit</button>`
+            html += `</div>`
+            return html
+        }
     </script>
 </body>
 
