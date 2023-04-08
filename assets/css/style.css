@@ -1,8 +1,21 @@
 #html-container{
     position: absolute;
-    width: 200px;
-    height: 70px;
-    background-color: gainsboro;
+    width: 500px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 20px;
+    width: 400px;
+    font-weight: 700;
+    color: #FFF;
+    text-shadow: 0 0 10px #000;
+}
     text-align: center;
     display: flex;
     align-items: center;
