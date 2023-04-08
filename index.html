@@ -21,18 +21,19 @@
     </div>
 
     <a-scene renderer="colorManagement:true;" shadow="type: pcfsoft">
-        <a-sky material="shader: gradient; bottomColor: 0 121 255; offset: 100" geometry="radius: 1000"></a-sky>
+        <a-sky material="shader: gradient; topColor: 0 0 0; bottomColor: 1 41 100 ; offset: 600"
+            geometry="radius: 1000"></a-sky>
     </a-scene>
 
     <script>
         const web2vr = new Web2VR("#html-container", {
             position: {
                 x: 0,
-                y: 1.7,
-                z: -0.5
+                y: 2.1,
+                z: -0.6
             },
-        });
-        web2vr.start();
+        })
+        web2vr.start()
     </script>
 </body>
 
