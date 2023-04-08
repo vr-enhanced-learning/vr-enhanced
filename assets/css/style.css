@@ -55,7 +55,7 @@ button {
     text-shadow: 0 0 10px #000;
 }
 
-.content {
+#content {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,7 +68,7 @@ button {
     width: 500px;
 }
 
-.questionsContainer {
+#questionsContainer {
     width: 300px;
     text-align: left;
     padding: 1rem 0.5rem;
@@ -81,7 +81,7 @@ button {
     background-color: #EEE;
 }
 
-.questions {
+#questions {
     width: 300px;
     text-align: left;
     padding: 1rem 0.5rem;
@@ -93,7 +93,7 @@ button {
     color: #EEE;
 }
 
-.questions span {
+#questions span {
     text-align: center;
     font-size: 12px;
     width: 250px;
@@ -101,7 +101,7 @@ button {
     color: #000;
 }
 
-.questions input[type="text"] {
+#questions input[type="text"] {
     font-size: 12px;
     width: 250px;
     font-weight: 700;

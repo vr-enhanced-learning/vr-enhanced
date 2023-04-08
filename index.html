@@ -18,30 +18,15 @@
 
         <h1>VR-Based Education With STIR and TURB</h1>
 
-        <div class="formContainer">
-            <input type="text" id="videoId" placeholder="Enter Youtube Video ID" />
-            <button id="submit" type="button">Submit</button>
+        <div id="formContainer">
+            <input type="text" id="videoId" placeholder="Enter Youtube Video ID" value="bPeZ5824gHk" />
+            <button id="submitYoutubeId" type="button">Submit</button>
         </div>
 
-        <span id="liveStatus">Status: Video is now loading...</span>
+        <span id="liveStatus">Enter the Video ID</span>
 
-        <div class="content">
-            <video id="video" src="./video.mp4" width="640" height="360" controls crossorigin></video>
-            <div class="questionsContainer">
-                <div class="questions">
-                    <span>What is the color of the star?</span>
-                    <input type="text" data-id="1" placeholder="Enter Answer" />
-                    <span>What are you doing right now?</span>
-                    <input type="text" data-id="2" placeholder="Enter Answer" />
-                    <span>What is the question?</span>
-                    <input type="text" data-id="3" placeholder="Enter Answer" />
-                    <span>What is the question?</span>
-                    <input type="text" data-id="4" placeholder="Enter Answer" />
-                    <span>What is the question?</span>
-                    <input type="text" data-id="5" placeholder="Enter Answer" />
-                </div>
-                <button id="submitAnswer" type="button">Submit</button>
-            </div>
+        <div id="content">
+
         </div>
 
 
@@ -53,6 +38,7 @@
     </a-scene>
 
     <script>
+
         const web2vr = new Web2VR("#html-container", {
             position: {
                 x: 0,
@@ -61,45 +47,55 @@
             },
         })
         web2vr.start()
-        function deleteFormContainer() {
-            let formContainer = document.querySelector(".formContainer")
-            formContainer.innerHTML = ""
-        }
 
-        function videoHTML(videoId) {
-            return `<video id="video" src="https://relay-youtube.cyclic.app/${videoId}" width="640" height="360" controls crossorigin></video>`
-        }
+        // load the video if the button is pressed
+        document.getElementById("submitYoutubeId").addEventListener("click", async () => {
 
-        function questionsHTML(questions) {
-            let html = `<div class="questionsContainer">`
-            html += `<div class="questions">`
-            questions.forEach((question, index) => {
-                html += `<span>${question}</span>`
-                html += `<input type="text" data-id="${index + 1}" placeholder="Enter Answer" />`
-            })
-            html += `</div>`
-            html += `<button id="submitAnswer" type="button">Submit</button>`
-            html += `</div>`
-            return html
-        }
 
-        async function getQuestions(videoId) {
-            let request = await fetch("https://youtube-questions.onrender.com", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    "youtubeVideoId": videoId
+            let videoId = document.getElementById("videoId").value
+
+            if (videoId) {
+
+                document.getElementById("formContainer").innerHTML = ""
+
+                let videoTag = `<video id="video" src="https://relay-youtube.cyclic.app/${videoId}" width="640" height="360" controls crossorigin></video>`
+
+                document.getElementById("content").innerHTML = videoTag
+
+                document.getElementById("liveStatus").innerHTML = `Status: Generating Questions...`
+
+
+                let questions = await fetch("https://youtube-questions.onrender.com", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        "youtubeVideoId": videoId
+                    })
                 })
-            })
-            let response = await request.json()
-            return response
-        }
 
-        async function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
+                questions = await questions.json()
+
+                document.getElementById("liveStatus").innerHTML = `Status: Questions Generated`
+
+                let questionsHTML = `<div id="questionsContainer">`
+                questionsHTML += `<div id="questions">`
+                questions.forEach((question, index) => {
+                    questionsHTML += `<span>${question}</span>`
+                    questionsHTML += `<input type="text" data-id="${index + 1}" placeholder="Enter Answer" />`
+                })
+                questionsHTML += `</div>`
+                questionsHTML += `<button id="submitAnswer" type="button">Submit</button>`
+                questionsHTML += `</div>`
+
+                document.getElementById("content").innerHTML += questionsHTML
+
+
+            }
+
+        })
+
     </script>
 </body>
 
