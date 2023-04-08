@@ -54,9 +54,32 @@ button {
     color: #FFF;
     text-shadow: 0 0 10px #000;
 }
+
+.content {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
+}
+
+#video {
+    border: 1px solid #111;
+    height: 300px;
+    width: 500px;
+}
+
+.questionsContainer {
+    width: 300px;
+    text-align: left;
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #FFF;
+    background-color: #EEE;
+}
+
     flex-direction: column;
 }
