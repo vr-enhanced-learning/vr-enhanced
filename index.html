@@ -69,6 +69,20 @@
         })
         questionPanel.start()
 
+        let doubtPanel = new Web2VR("#doubtPanel", {
+            position: {
+                x: -1.4,
+                y: 1.8,
+                z: -0.4
+            },
+            rotation: {
+                x: 0,
+                y: 45,
+                z: 2
+            }
+        })
+        doubtPanel.start()
+
 
         document.getElementById("submitYoutubeId").addEventListener("click", async () => {
 
