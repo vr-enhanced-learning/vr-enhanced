@@ -1,0 +1,141 @@
+#html-container{
+    position: absolute;
+    width: 500px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 20px;
+    width: 400px;
+    font-weight: 700;
+    color: #FFF;
+}
+
+#formContainer {
+    margin-top: 7rem;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+input[type="text"] {
+    width: 170px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+}
+
+button {
+    width: 90px;
+    height: 42px;
+    border: 1px solid #000;
+    padding: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFF;
+    background-color: #8e44ad;
+    cursor: pointer;
+}
+
+#liveStatus {
+    margin-top: -1rem;
+    font-size: 12px;
+    font-weight: 700;
+    color: #FFF;
+    padding-top: 5px;
+    height: 20px;
+    width: 300px;
+    color: #4cd137;
+    font-weight: 700;
+    background: #000;
+}
+
+#content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#video {
+    border: 1px solid #111;
+    height: 300px;
+    width: 500px;
+}
+
+#questionsContainer {
+    width: 300px;
+    text-align: left;
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #FFF;
+    background-color: #EEE;
+}
+
+#questions {
+    width: 300px;
+    text-align: left;
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #EEE;
+}
+
+#questions span {
+    text-align: center;
+    font-size: 12px;
+    width: 250px;
+    font-weight: 700;
+    color: #000;
+}
+
+#questions input[type="text"] {
+    font-size: 12px;
+    width: 250px;
+    font-weight: 700;
+    color: #000;
+}
+
+#submitAnswer {
+    background-color: #0070f3;
+    color: #FFF;
+}
+
+#submitAnswer {
+    background-color: #0070f3;
+    color: #FFF;
+    width: 140px;
+}
+
+#questionPanel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#questionPanel h1 {
+    font-size: 30px;
+    margin: 0;
+    width: 400px;
+    color: #000;
+    text-align: center;
+}
