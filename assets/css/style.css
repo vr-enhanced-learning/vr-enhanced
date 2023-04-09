@@ -47,15 +47,6 @@ button {
 	cursor: pointer;
 }
 
-#enterVR {
-	font-size: 12px;
-	padding: 0;
-	height: 20px;
-	background-color: #4cd137;
-	color: #000;
-	outline: none;
-}
-
 #liveStatus {
 	margin-top: -1rem;
 	font-size: 12px;
@@ -122,11 +113,8 @@ button {
 }
 
 #submitAnswer {
-	background-color: #0070f3;
-	color: #fff;
-}
-
-#submitAnswer {
+	width: 90px;
+	height: 42px;
 	background-color: #0070f3;
 	color: #fff;
 	width: 140px;
