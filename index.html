@@ -16,6 +16,10 @@
     <div id="html-container">
 
         <img src="./assets/images/title.png" alt="logo" height="90" width="300" />
+
+        <div id="enterVRButtonContainer">
+            <button id="enterVR" type="button">Enter VR</button>
+        </div>
         
         <span id="liveStatus">Enter the Video ID</span>
         
@@ -41,7 +45,7 @@
         <span id="doubtAnswer"></span>
     </div>
 
-    <a-scene renderer="colorManagement:true;" shadow="type: pcfsoft">
+    <a-scene renderer="colorManagement:true;" shadow="type: pcfsoft" id="a-scene">
         <a-assets>
             <a-asset-item id="environment" src="./assets/models/environment.glb"></a-asset-item>
             <!-- <a-asset-item id="videoFrame" src="./assets/images/frame.png" crossorigin="anonymous"></a-asset-item> -->
@@ -91,6 +95,11 @@
         })
         doubtPanel.start()
 
+        document.getElementById("enterVR").addEventListener("click", () => {
+            document.getElementById("a-scene").enterVR()
+            document.getElementById("enterVRButtonContainer").innerHTML = ""
+
+        })
 
         document.getElementById("submitYoutubeId").addEventListener("click", async () => {
 
