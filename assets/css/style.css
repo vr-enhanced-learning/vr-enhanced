@@ -259,6 +259,12 @@ h1 {
 	animation-delay: 2s;
 }
 
+#enterVR {
+	-webkit-animation-name: tada;
+	animation-name: tada;
+	animation-delay: 2.2s;
+}
+
 #formContainer {
 	margin-top: 7rem;
 	display: flex;
