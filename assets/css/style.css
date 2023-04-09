@@ -253,6 +253,12 @@ h1 {
 	color: #fff;
 }
 
+#titleImage {
+	-webkit-animation-name: fadeInDown;
+	animation-name: fadeInDown;
+	animation-delay: 2s;
+}
+
 #formContainer {
 	margin-top: 7rem;
 	display: flex;
