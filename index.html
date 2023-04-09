@@ -17,11 +17,11 @@
 
         <img src="./assets/images/title.png" alt="logo" height="90" width="300" />
 
+        <span id="liveStatus">Enter the Video ID</span>
+
         <div id="enterVRButtonContainer">
             <button id="enterVR" type="button">Enter VR</button>
         </div>
-        
-        <span id="liveStatus">Enter the Video ID</span>
         
         <div id="content"></div>
 
@@ -169,6 +169,10 @@
                 document.getElementById("questionPanel").prepend(questionsContainer)
 
                 document.getElementById("buttonsContainer").innerHTML = `<button id="submitAnswer" type="button">Submit Answers</button>`
+
+                setTimeout(() => {
+                    document.getElementById("liveStatus").innerHTML = ''
+                }, 1000)
 
                 document.getElementById("submitAnswer").addEventListener("click", async () => {
 
