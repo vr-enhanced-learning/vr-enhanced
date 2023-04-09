@@ -1,141 +1,173 @@
-#html-container{
-    position: absolute;
-    width: 500px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    flex-direction: column;
+#html-container {
+	position: absolute;
+	width: 500px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	flex-direction: column;
 }
 
 h1 {
-    font-size: 20px;
-    width: 400px;
-    font-weight: 700;
-    color: #FFF;
+	font-size: 20px;
+	width: 400px;
+	font-weight: 700;
+	color: #fff;
 }
 
 #formContainer {
-    margin-top: 7rem;
-    display: flex;
-    gap: 5px;
-    align-items: center;
+	margin-top: 7rem;
+	display: flex;
+	gap: 5px;
+	align-items: center;
 }
 
 input[type="text"] {
-    width: 170px;
-    height: 30px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    padding: 5px;
-    font-size: 16px;
-    font-weight: 700;
-    color: #000;
-    text-align: center;
+	width: 170px;
+	height: 30px;
+	border: 1px solid #000;
+	border-radius: 5px;
+	padding: 5px;
+	font-size: 16px;
+	font-weight: 700;
+	color: #000;
+	text-align: center;
 }
 
 button {
-    width: 90px;
-    height: 42px;
-    border: 1px solid #000;
-    padding: 5px;
-    font-size: 16px;
-    font-weight: 700;
-    color: #FFF;
-    background-color: #8e44ad;
-    cursor: pointer;
+	width: 90px;
+	height: 42px;
+	border: 1px solid #000;
+	padding: 5px;
+	font-size: 16px;
+	font-weight: 700;
+	color: #fff;
+	background-color: #8e44ad;
+	cursor: pointer;
 }
 
 #liveStatus {
-    margin-top: -1rem;
-    font-size: 12px;
-    font-weight: 700;
-    color: #FFF;
-    padding-top: 5px;
-    height: 20px;
-    width: 300px;
-    color: #4cd137;
-    font-weight: 700;
-    background: #000;
+	margin-top: -1rem;
+	font-size: 12px;
+	font-weight: 700;
+	color: #fff;
+	padding-top: 5px;
+	height: 20px;
+	width: 300px;
+	color: #4cd137;
+	font-weight: 700;
 }
 
 #content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
 }
 
 #video {
-    border: 1px solid #111;
-    height: 300px;
-    width: 500px;
+	border: 1px solid #111;
+	height: 300px;
+	width: 500px;
 }
 
 #questionsContainer {
-    width: 300px;
-    text-align: left;
-    padding: 1rem 0.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: #FFF;
-    background-color: #EEE;
+	width: 300px;
+	text-align: left;
+	padding: 1rem 0.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	color: #fff;
+	background-color: #eee;
 }
 
 #questions {
-    width: 300px;
-    text-align: left;
-    padding: 1rem 0.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: #EEE;
+	width: 300px;
+	text-align: left;
+	padding: 1rem 0.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	color: #eee;
 }
 
 #questions span {
-    text-align: center;
-    font-size: 12px;
-    width: 250px;
-    font-weight: 700;
-    color: #000;
+	text-align: center;
+	font-size: 12px;
+	width: 250px;
+	font-weight: 700;
+	color: #000;
 }
 
 #questions input[type="text"] {
-    font-size: 12px;
-    width: 250px;
-    font-weight: 700;
-    color: #000;
+	font-size: 12px;
+	width: 250px;
+	font-weight: 700;
+	color: #000;
 }
 
 #submitAnswer {
-    background-color: #0070f3;
-    color: #FFF;
+	background-color: #0070f3;
+	color: #fff;
 }
 
 #submitAnswer {
-    background-color: #0070f3;
-    color: #FFF;
-    width: 140px;
+	background-color: #0070f3;
+	color: #fff;
+	width: 140px;
 }
 
 #questionPanel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
 }
 
 #questionPanel h1 {
-    font-size: 30px;
-    margin: 0;
-    width: 400px;
-    color: #000;
-    text-align: center;
+	font-size: 30px;
+	margin: 0;
+	width: 400px;
+	color: #000;
+	text-align: center;
+}
+
+#doubtPanel {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	position: relative;
+	width: 300px;
+	height: 300px;
+	background: #000;
+}
+
+#doubtDiv {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+#doubtHeading {
+	font-size: 30px;
+	color: #000;
+	text-align: center;
+}
+
+#doubtAnswer {
+	margin-top: 1rem;
+	max-width: 290px;
+	font-size: 20px;
+	color: #fff;
+	text-align: center;
 }

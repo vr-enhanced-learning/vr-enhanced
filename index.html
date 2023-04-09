@@ -15,29 +15,41 @@
 <body>
     <div id="html-container">
 
-        <h1>VR-Based Education With STIR and TURB</h1>
+        <img src="./assets/images/title.png" alt="logo" height="90" width="300" />
+        
+        <span id="liveStatus">Enter the Video ID</span>
+        
+        <div id="content"></div>
 
         <div id="formContainer">
-            <input type="text" id="videoId" placeholder="Enter Youtube Video ID" value="AKJfakEsgy0" />
+            <input type="text" id="videoId" placeholder="Enter Youtube Video ID" value="-UrdExQW0cs" />
             <button id="submitYoutubeId" type="button">Submit</button>
         </div>
 
-        <span id="liveStatus">Enter the Video ID</span>
-
-        <div id="content"></div>
     </div>
 
     <div id="questionPanel">
         <div id="buttonsContainer"></div>
     </div>
 
+    <div id="doubtPanel">
+        <img src="./assets/images/doubt.png" alt="doubt" height="150" width="300" />
+        <div id="doubtDiv">
+            <textarea id="doubt" placeholder="Enter your doubt"></textarea>
+            <button id="submitDoubt" type="button">Submit</button>
+        </div>
+        <span id="doubtAnswer"></span>
+    </div>
 
     <a-scene renderer="colorManagement:true;" shadow="type: pcfsoft">
         <a-assets>
             <a-asset-item id="environment" src="./assets/models/environment.glb"></a-asset-item>
+            <!-- <a-asset-item id="videoFrame" src="./assets/images/frame.png" crossorigin="anonymous"></a-asset-item> -->
         </a-assets>
 
         <a-entity position="0.2 0 0" scale="1.5 1.5 1.5" rotation="" gltf-model="#environment" ></a-entity>
+        <!-- <a-image id="readBook" src="#videoFrame" position="0 1.575 -0.64715" width="3.5" rotation="" scale="2 2 2" material="" geometry="width: 0.47; height: 0.29"></a-image> -->
+
     </a-scene>
 
     <script>
@@ -45,7 +57,7 @@
         const web2vr = new Web2VR("#html-container", {
             position: {
                 x: 0,
-                y: 2,
+                y: 2.1,
                 z: -0.6
             },
         })
@@ -64,6 +76,20 @@
             }
         })
         questionPanel.start()
+
+        let doubtPanel = new Web2VR("#doubtPanel", {
+            position: {
+                x: -1.4,
+                y: 1.8,
+                z: -0.4
+            },
+            rotation: {
+                x: 0,
+                y: 45,
+                z: 2
+            }
+        })
+        doubtPanel.start()
 
 
         document.getElementById("submitYoutubeId").addEventListener("click", async () => {
@@ -108,9 +134,13 @@
                 let questionsDiv = document.createElement("div")
                 questionsDiv.id = "questions"
 
-                let h1Tag = document.createElement("h1")
-                h1Tag.innerHTML = "Try to answer these after watching the video"
-                questionsDiv.appendChild(h1Tag)
+                let imageTag = document.createElement("img")
+                imageTag.src = "./assets/images/question.png"
+                imageTag.alt = "question"
+                imageTag.height = "150"
+                imageTag.width = "300"
+
+                questionsContainer.appendChild(imageTag)
 
                 questions.forEach((question, index) => {
                     let questionSpan = document.createElement("span")
