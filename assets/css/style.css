@@ -173,10 +173,20 @@ button {
 	text-align: center;
 }
 
+#doubt {
+	text-align: center;
+}
+
 #doubtAnswer {
 	margin-top: 1rem;
 	max-width: 290px;
 	font-size: 20px;
 	color: #fff;
 	text-align: center;
+}
+
+#submitDoubt {
+	background-color: #0070f3;
+	color: #fff;
+	height: 50px;
 }
