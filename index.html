@@ -112,9 +112,13 @@
                 let questionsDiv = document.createElement("div")
                 questionsDiv.id = "questions"
 
-                let h1Tag = document.createElement("h1")
-                h1Tag.innerHTML = "Try to answer these after watching the video"
-                questionsDiv.appendChild(h1Tag)
+                let imageTag = document.createElement("img")
+                imageTag.src = "./assets/images/question.png"
+                imageTag.alt = "question"
+                imageTag.height = "150"
+                imageTag.width = "300"
+
+                questionsContainer.appendChild(imageTag)
 
                 questions.forEach((question, index) => {
                     let questionSpan = document.createElement("span")
