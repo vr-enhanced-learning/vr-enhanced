@@ -19,8 +19,10 @@ h1 {
 #formContainer {
 	margin-top: 7rem;
 	display: flex;
+	flex-direction: column;
 	gap: 5px;
 	align-items: center;
+	justify-content: center;
 }
 
 input[type="text"] {
@@ -35,17 +37,13 @@ input[type="text"] {
 	text-align: center;
 }
 
-button {
-	width: 90px;
-	height: 42px;
-	border: 1px solid #000;
+#submitYoutubeId {
 	padding: 5px;
 	font-size: 16px;
 	font-weight: 700;
 	color: #fff;
 	background-color: #8e44ad;
-	cursor: pointer;
-}
+} 
 
 #liveStatus {
 	margin-top: -1rem;
