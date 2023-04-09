@@ -286,7 +286,10 @@ input[type="text"] {
 	font-weight: 700;
 	color: #fff;
 	background-color: #8e44ad;
-} 
+	-webkit-animation-name: fadeInUp;
+	animation-name: fadeInUp;
+	animation-delay: 2.5s;
+}
 
 #liveStatus {
 	margin-top: -1rem;
