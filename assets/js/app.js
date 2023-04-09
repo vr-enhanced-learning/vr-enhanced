@@ -45,8 +45,9 @@ document
 	.addEventListener("click", async () => {
 		let videoId = document.getElementById("videoId").value
 
-		if (videoId) {
-			document.getElementById("formContainer").innerHTML = ""
+		if (!videoId) return alert("Please enter a valid youtube video id")
+
+		document.getElementById("formContainer").innerHTML = ""
 
 			let videoTag = document.createElement("video")
 			videoTag.id = "video"
@@ -133,7 +134,6 @@ document
 							})
 						})
 
-					console.log(answers)
-				})
-		}
+				console.log(answers)
+			})
 	})
