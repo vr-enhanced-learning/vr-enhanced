@@ -2,195 +2,62 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>VR Based Education</title>
-    <meta name="description" content="Web2VR">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="./assets/js/aframe.min.js"></script>
-    <script src="./assets/js/quickxr.js"></script>
+	<meta charset="utf-8">
+	<title>VR Based Education</title>
+	<meta name="description" content="Web2VR">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="./assets/js/aframe.min.js"></script>
+	<script src="./assets/js/quickxr.js"></script>
 
-    <link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-    <div id="html-container">
+	<div id="html-container">
 
-        <img src="./assets/images/title.png" alt="logo" height="90" width="300" />
+		<img src="./assets/images/title.png" alt="logo" height="90" width="300" />
 
-        <span id="liveStatus">Enter the Video ID</span>
+		<span id="liveStatus">Enter the Video ID</span>
 
-        <div id="enterVRButtonContainer">
-            <button id="enterVR" type="button">Enter VR</button>
-        </div>
-        
-        <div id="content"></div>
+		<div id="enterVRButtonContainer">
+			<button id="enterVR" type="button">Enter VR</button>
+		</div>
 
-        <div id="formContainer">
-            <input type="text" id="videoId" placeholder="Enter Youtube Video ID" value="-UrdExQW0cs" />
-            <button id="submitYoutubeId" type="button">Submit</button>
-        </div>
+		<div id="content"></div>
 
-    </div>
+		<div id="formContainer">
+			<input type="text" id="videoId" placeholder="Enter Youtube Video ID" value="-UrdExQW0cs" />
+			<button id="submitYoutubeId" type="button">Submit</button>
+		</div>
 
-    <div id="questionPanel">
-        <div id="buttonsContainer"></div>
-    </div>
+	</div>
 
-    <div id="doubtPanel">
-        <img src="./assets/images/doubt.png" alt="doubt" height="150" width="300" />
-        <div id="doubtDiv">
-            <textarea id="doubt" placeholder="Enter your doubt" rows="3"></textarea>
-            <button id="submitDoubt" type="button">Submit</button>
-        </div>
-        <span id="doubtAnswer"></span>
-    </div>
+	<div id="questionPanel">
+		<div id="buttonsContainer"></div>
+	</div>
 
-    <a-scene renderer="colorManagement:true;" shadow="type: pcfsoft" id="a-scene">
-        <a-assets>
-            <a-asset-item id="environment" src="./assets/models/environment.glb"></a-asset-item>
-            <!-- <a-asset-item id="videoFrame" src="./assets/images/frame.png" crossorigin="anonymous"></a-asset-item> -->
-        </a-assets>
+	<div id="doubtPanel">
+		<img src="./assets/images/doubt.png" alt="doubt" height="150" width="300" />
+		<div id="doubtDiv">
+			<textarea id="doubt" placeholder="Enter your doubt" rows="3"></textarea>
+			<button id="submitDoubt" type="button">Submit</button>
+		</div>
+		<span id="doubtAnswer"></span>
+	</div>
 
-        <a-entity position="0.2 0 0" scale="1.5 1.5 1.5" rotation="" gltf-model="#environment" ></a-entity>
-        <!-- <a-image id="readBook" src="#videoFrame" position="0 1.575 -0.64715" width="3.5" rotation="" scale="2 2 2" material="" geometry="width: 0.47; height: 0.29"></a-image> -->
+	<a-scene renderer="colorManagement:true;" shadow="type: pcfsoft" id="a-scene">
+		<a-assets>
+			<a-asset-item id="environment" src="./assets/models/environment.glb"></a-asset-item>
+			<!-- <a-asset-item id="videoFrame" src="./assets/images/frame.png" crossorigin="anonymous"></a-asset-item> -->
+		</a-assets>
 
-    </a-scene>
+		<a-entity position="0.2 0 0" scale="1.5 1.5 1.5" rotation="" gltf-model="#environment"></a-entity>
+		<!-- <a-image id="readBook" src="#videoFrame" position="0 1.575 -0.64715" width="3.5" rotation="" scale="2 2 2" material="" geometry="width: 0.47; height: 0.29"></a-image> -->
 
-    <script>
+	</a-scene>
 
-        const web2vr = new Web2VR("#html-container", {
-            position: {
-                x: 0,
-                y: 2.1,
-                z: -0.6
-            },
-        })
-        web2vr.start()
+	<script src="./assets/js/app.js"></script>
 
-        let questionPanel = new Web2VR("#questionPanel", {
-            position: {
-                x: 0.05,
-                y: 2.1,
-                z: -1.2
-            },
-            rotation: {
-                x: 0,
-                y: -45,
-                z: -2
-            }
-        })
-        questionPanel.start()
-
-        let doubtPanel = new Web2VR("#doubtPanel", {
-            position: {
-                x: -1.3,
-                y: 1.8,
-                z: -0.5
-            },
-            rotation: {
-                x: 0,
-                y: 45,
-                z: 2
-            }
-        })
-        doubtPanel.start()
-
-        document.getElementById("enterVR").addEventListener("click", () => {
-            document.getElementById("a-scene").enterVR()
-            document.getElementById("enterVRButtonContainer").innerHTML = ""
-
-        })
-
-        document.getElementById("submitYoutubeId").addEventListener("click", async () => {
-
-
-            let videoId = document.getElementById("videoId").value
-
-            if (videoId) {
-
-                document.getElementById("formContainer").innerHTML = ""
-
-                let videoTag = document.createElement("video")
-                videoTag.id = "video"
-                videoTag.src = `https://relay-youtube.adaptable.app/${videoId}`
-                videoTag.width = 640
-                videoTag.height = 360
-                videoTag.controls = true
-                videoTag.crossOrigin = "anonymous"
-
-                document.getElementById("content").appendChild(videoTag)
-
-                document.getElementById("liveStatus").innerHTML = `Status: Generating Questions...`
-
-
-                let questions = await fetch("https://youtube-questions.vercel.app", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        "youtubeVideoId": videoId
-                    })
-                })
-
-                questions = await questions.json()
-
-                document.getElementById("liveStatus").innerHTML = `Status: Questions Generated`
-
-                let questionsContainer = document.createElement("div")
-                questionsContainer.id = "questionsContainer"
-
-                let questionsDiv = document.createElement("div")
-                questionsDiv.id = "questions"
-
-                let imageTag = document.createElement("img")
-                imageTag.src = "./assets/images/question.png"
-                imageTag.alt = "question"
-                imageTag.height = "150"
-                imageTag.width = "300"
-
-                questionsContainer.appendChild(imageTag)
-
-                questions.forEach((question, index) => {
-                    let questionSpan = document.createElement("span")
-                    questionSpan.innerHTML = question
-
-                    let answerInput = document.createElement("input")
-                    answerInput.type = "text"
-                    answerInput.placeholder = "Enter Answer"
-                    answerInput.dataset.id = index + 1
-
-                    questionsDiv.appendChild(questionSpan)
-                    questionsDiv.appendChild(answerInput)
-                })
-
-                questionsContainer.appendChild(questionsDiv)
-
-                document.getElementById("questionPanel").prepend(questionsContainer)
-
-                document.getElementById("buttonsContainer").innerHTML = `<button id="submitAnswer" type="button">Submit Answers</button>`
-
-                setTimeout(() => {
-                    document.getElementById("liveStatus").innerHTML = ''
-                }, 1000)
-
-                document.getElementById("submitAnswer").addEventListener("click", async () => {
-
-                    let answers = []
-                    document.querySelectorAll("#questions input").forEach((input) => {
-                        answers.push({
-                            "questionId": input.dataset.id,
-                            "answer": input.value
-                        })
-                    })
-
-                    console.log(answers)
-
-                })
-            }
-        })
-
-    </script>
 </body>
 
 </html>
