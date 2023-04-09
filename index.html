@@ -25,13 +25,11 @@
 
         <span id="liveStatus">Enter the Video ID</span>
 
-        <div id="content">
+        <div id="content"></div>
+    </div>
 
-        </div>
-
-        <button id="submitAnswer" type="button">Submit</button>
-
-
+    <div id="questionPanel">
+        <div id="buttonsContainer"></div>
     </div>
 
     <a-scene renderer="colorManagement:true;" shadow="type: pcfsoft">
@@ -44,26 +42,26 @@
         const web2vr = new Web2VR("#html-container", {
             position: {
                 x: 0,
-                y: 2.1,
+                y: 2,
                 z: -0.6
             },
         })
         web2vr.start()
 
-        document.getElementById("submitAnswer").addEventListener("click", async () => {
-
-            let answers = []
-
-            document.querySelectorAll("#questions input").forEach((input) => {
-                answers.push({
-                    "questionId": input.dataset.id,
-                    "answer": input.value
-                })
-            })
-
-            console.log(answers)
-
+        let questionPanel = new Web2VR("#questionPanel", {
+            position: {
+                x: 0.05,
+                y: 2.1,
+                z: -1.2
+            },
+            rotation: {
+                x: 0,
+                y: -45,
+                z: -2
+            }
         })
+        questionPanel.start()
+
 
         document.getElementById("submitYoutubeId").addEventListener("click", async () => {
 
@@ -107,6 +105,10 @@
                 let questionsDiv = document.createElement("div")
                 questionsDiv.id = "questions"
 
+                let h1Tag = document.createElement("h1")
+                h1Tag.innerHTML = "Try to answer these after watching the video"
+                questionsDiv.appendChild(h1Tag)
+
                 questions.forEach((question, index) => {
                     let questionSpan = document.createElement("span")
                     questionSpan.innerHTML = question
@@ -122,11 +124,24 @@
 
                 questionsContainer.appendChild(questionsDiv)
 
-                document.getElementById("content").appendChild(questionsContainer)
+                document.getElementById("questionPanel").prepend(questionsContainer)
 
+                document.getElementById("buttonsContainer").innerHTML = `<button id="submitAnswer" type="button">Submit Answers</button>`
 
+                document.getElementById("submitAnswer").addEventListener("click", async () => {
+
+                    let answers = []
+                    document.querySelectorAll("#questions input").forEach((input) => {
+                        answers.push({
+                            "questionId": input.dataset.id,
+                            "answer": input.value
+                        })
+                    })
+
+                    console.log(answers)
+
+                })
             }
-
         })
 
     </script>
