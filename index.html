@@ -32,7 +32,11 @@
     </div>
 
     <a-scene renderer="colorManagement:false;" shadow="type: pcfsoft">
+        <a-assets>
+            <a-asset-item id="environment" src="./assets/models/environment.glb"></a-asset-item>
+        </a-assets>
 
+        <a-entity position="0.2 0 0" scale="1.5 1.5 1.5" rotation="" gltf-model="#environment" ></a-entity>
     </a-scene>
 
     <script>
