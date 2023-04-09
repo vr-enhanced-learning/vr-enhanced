@@ -16,8 +16,8 @@ h1 {
     color: #FFF;
 }
 
-.formContainer {
-    margin-top: 8rem;
+#formContainer {
+    margin-top: 7rem;
     display: flex;
     gap: 5px;
     align-items: center;
@@ -48,10 +48,16 @@ button {
 }
 
 #liveStatus {
+    margin-top: -1rem;
     font-size: 12px;
     font-weight: 700;
     color: #FFF;
-    text-shadow: 0 0 10px #000;
+    padding-top: 5px;
+    height: 20px;
+    width: 300px;
+    color: #4cd137;
+    font-weight: 700;
+    background: #000;
 }
 
 #content {
