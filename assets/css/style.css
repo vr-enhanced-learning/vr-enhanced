@@ -215,7 +215,7 @@
 	justify-content: center;
 }
 
-input[type="text"] {
+#videoId {
 	width: 170px;
 	height: 30px;
 	border: 1px solid #000;
