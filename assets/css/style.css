@@ -241,8 +241,6 @@
 #liveStatus {
 	margin-top: -1rem;
 	font-size: 12px;
-	font-weight: 700;
-	color: #fff;
 	padding-top: 5px;
 	height: 20px;
 	width: 300px;
@@ -327,7 +325,7 @@
 	text-align: center;
 }
 
-#doubtPanel {
+#doubtPanelContents {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -337,9 +335,6 @@
 	width: 300px;
 	height: 300px;
 	background: #000;
-	-webkit-animation-name: fadeInLeft;
-	animation-name: fadeInLeft;
-	animation-delay: 3s;
 }
 
 #doubtDiv {
@@ -361,7 +356,8 @@
 
 #doubtAnswer {
 	margin-top: 1rem;
-	max-width: 290px;
+	width: 290px;
+	margin-left: 1rem;
 	font-size: 20px;
 	color: #fff;
 	text-align: center;
