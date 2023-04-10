@@ -24,7 +24,7 @@ questionPanel.start()
 let doubtPanel = new Web2VR("#doubtPanel", {
 	position: {
 		x: -1.3,
-		y: 1.8,
+		y: 2.627,
 		z: -0.5,
 	},
 	rotation: {
