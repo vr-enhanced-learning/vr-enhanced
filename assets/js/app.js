@@ -147,6 +147,29 @@ document
 				console.log(answers)
 			})
 
+		document.getElementById(
+			"liveStatus"
+		).innerHTML = `Status: Getting the model ready to answer your questions...`
+
+		await fetch(
+			"https://currentlyexhausted-question-answering.hf.space/run/predict",
+			{
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({
+					data: [
+						JSON.parse(window.localStorage.getItem("captions")),
+						"what is this about?",
+					],
+				}),
+			}
+		)
+
+		document.getElementById(
+			"liveStatus"
+		).innerHTML = `Status: Model ready to answer your questions!`
+	})
+
 document.getElementById("submitDoubt").addEventListener("click", async () => {
 	let textArea = document.getElementById("doubt")
 	let answerSpan = document.getElementById("doubtAnswer")
