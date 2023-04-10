@@ -136,4 +136,30 @@ document
 
 				console.log(answers)
 			})
-	})
+
+document.getElementById("submitDoubt").addEventListener("click", async () => {
+	let textArea = document.getElementById("doubt")
+	let answerSpan = document.getElementById("doubtAnswer")
+	let context = JSON.parse(window.localStorage.getItem("captions"))
+
+	answerSpan.innerHTML = "Getting the answer..."
+
+	let answer = await fetch(
+		"https://currentlyexhausted-question-answering.hf.space/run/predict",
+		{
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				data: [context, textArea.value + "?"],
+			}),
+		}
+	)
+
+	answer = await answer.json()
+
+	let confidencePercent = answer.data[1].label * 100
+	confidencePercent = confidencePercent.toFixed(2)
+
+	answerSpan.innerHTML =
+		answer.data[0] + " - " + confidencePercent + "%" + " confidence"
+})
