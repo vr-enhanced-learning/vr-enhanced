@@ -124,9 +124,9 @@ document
 			"buttonsContainer"
 		).innerHTML = `<button id="submitAnswer" type="button">Submit Answers</button>`
 
-		setTimeout(() => {
-			document.getElementById("liveStatus").innerHTML = ""
-		}, 1000)
+		document.getElementById(
+			"liveStatus"
+		).innerHTML = `Status: Getting the model ready to answer your questions...`
 
 		document
 			.getElementById("submitAnswer")
@@ -144,10 +144,6 @@ document
 				console.log(answers)
 			})
 
-		document.getElementById(
-			"liveStatus"
-		).innerHTML = `Status: Getting the model ready to answer your questions...`
-
 		await fetch(
 			"https://currentlyexhausted-question-answering.hf.space/run/predict",
 			{
@@ -162,34 +158,73 @@ document
 			}
 		)
 
+		let doubtContainer = document.createElement("div")
+		doubtContainer.id = "doubtContainer"
+
+		let doubtImage = document.createElement("img")
+		doubtImage.src = "./assets/images/doubt.png"
+		doubtImage.alt = "doubt"
+		doubtImage.height = "150"
+		doubtImage.width = "300"
+
+		let doubtDiv = document.createElement("div")
+		doubtDiv.id = "doubtDiv"
+
+		let doubtTextArea = document.createElement("textarea")
+		doubtTextArea.id = "doubt"
+		doubtTextArea.placeholder = "Enter your doubt"
+		doubtTextArea.rows = "3"
+
+		let doubtSubmitButton = document.createElement("button")
+		doubtSubmitButton.id = "submitDoubt"
+		doubtSubmitButton.type = "button"
+		doubtSubmitButton.innerHTML = "Submit"
+		doubtSubmitButton.addEventListener("click", async () => {
+			let textArea = document.getElementById("doubt")
+			let answerSpan = document.getElementById("doubtAnswer")
+			let context = JSON.parse(window.localStorage.getItem("captions"))
+
+			answerSpan.innerHTML = "Getting the answer..."
+
+			let answer = await fetch(
+				"https://currentlyexhausted-question-answering.hf.space/run/predict",
+				{
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						data: [context, textArea.value + "?"],
+					}),
+				}
+			)
+
+			answer = await answer.json()
+
+			let confidencePercent = answer.data[1].label * 100
+			confidencePercent = confidencePercent.toFixed(2)
+
+			answerSpan.innerHTML =
+				answer.data[0] + " - " + confidencePercent + "%" + " confidence"
+		})
+
+		doubtDiv.appendChild(doubtTextArea)
+		doubtDiv.appendChild(doubtSubmitButton)
+
+		doubtContainer.appendChild(doubtImage)
+
+		doubtContainer.appendChild(doubtDiv)
+
+		let doubtAnswerSpan = document.createElement("span")
+		doubtAnswerSpan.id = "doubtAnswer"
+
+		let doubtPanelContents = document.createElement("div")
+		doubtPanelContents.id = "doubtPanelContents"
+
+		doubtPanelContents.appendChild(doubtContainer)
+		doubtPanelContents.appendChild(doubtAnswerSpan)
+
+		document.getElementById("doubtPanel").prepend(doubtPanelContents)
+
 		document.getElementById(
 			"liveStatus"
 		).innerHTML = `Status: Model ready to answer your questions!`
 	})
-
-document.getElementById("submitDoubt").addEventListener("click", async () => {
-	let textArea = document.getElementById("doubt")
-	let answerSpan = document.getElementById("doubtAnswer")
-	let context = JSON.parse(window.localStorage.getItem("captions"))
-
-	answerSpan.innerHTML = "Getting the answer..."
-
-	let answer = await fetch(
-		"https://currentlyexhausted-question-answering.hf.space/run/predict",
-		{
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({
-				data: [context, textArea.value + "?"],
-			}),
-		}
-	)
-
-	answer = await answer.json()
-
-	let confidencePercent = answer.data[1].label * 100
-	confidencePercent = confidencePercent.toFixed(2)
-
-	answerSpan.innerHTML =
-		answer.data[0] + " - " + confidencePercent + "%" + " confidence"
-})
