@@ -49,15 +49,15 @@ document
 
 		document.getElementById("formContainer").innerHTML = ""
 
-			let videoTag = document.createElement("video")
-			videoTag.id = "video"
-			videoTag.src = `https://relay-youtube.adaptable.app/${videoId}`
-			videoTag.width = 640
-			videoTag.height = 360
-			videoTag.controls = true
-			videoTag.crossOrigin = "anonymous"
+		let videoTag = document.createElement("video")
+		videoTag.id = "video"
+		videoTag.src = `https://relay-youtube.adaptable.app/${videoId}`
+		videoTag.width = 640
+		videoTag.height = 360
+		videoTag.controls = true
+		videoTag.crossOrigin = "anonymous"
 
-			document.getElementById("content").appendChild(videoTag)
+		document.getElementById("content").appendChild(videoTag)
 
 		document.getElementById(
 			"liveStatus"
@@ -73,76 +73,73 @@ document
 			"liveStatus"
 		).innerHTML = `Status: Generating Questions...`
 
-			let questions = await fetch(
-				"https://youtube-questions.vercel.app",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						youtubeVideoId: videoId,
-					}),
-				}
-			)
+		let questions = await fetch("https://youtube-questions.vercel.app", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				youtubeVideoId: videoId,
+			}),
+		})
 
-			questions = await questions.json()
+		questions = await questions.json()
 
-			document.getElementById(
-				"liveStatus"
-			).innerHTML = `Status: Questions Generated`
+		document.getElementById(
+			"liveStatus"
+		).innerHTML = `Status: Questions Generated`
 
-			let questionsContainer = document.createElement("div")
-			questionsContainer.id = "questionsContainer"
+		let questionsContainer = document.createElement("div")
+		questionsContainer.id = "questionsContainer"
 
-			let questionsDiv = document.createElement("div")
-			questionsDiv.id = "questions"
+		let questionsDiv = document.createElement("div")
+		questionsDiv.id = "questions"
 
-			let imageTag = document.createElement("img")
-			imageTag.src = "./assets/images/question.png"
-			imageTag.alt = "question"
-			imageTag.height = "150"
-			imageTag.width = "300"
+		let imageTag = document.createElement("img")
+		imageTag.src = "./assets/images/question.png"
+		imageTag.alt = "question"
+		imageTag.height = "150"
+		imageTag.width = "300"
 
-			questionsContainer.appendChild(imageTag)
+		questionsContainer.appendChild(imageTag)
 
-			questions.forEach((question, index) => {
-				let questionSpan = document.createElement("span")
-				questionSpan.innerHTML = question
+		questions.forEach((question, index) => {
+			let questionSpan = document.createElement("span")
+			questionSpan.innerHTML = question
 
-				let answerInput = document.createElement("input")
-				answerInput.type = "text"
-				answerInput.placeholder = "Enter Answer"
-				answerInput.dataset.id = index + 1
+			let answerInput = document.createElement("input")
+			answerInput.type = "text"
+			answerInput.placeholder = "Enter Answer"
+			answerInput.dataset.id = index + 1
 
-				questionsDiv.appendChild(questionSpan)
-				questionsDiv.appendChild(answerInput)
-			})
+			questionsDiv.appendChild(questionSpan)
+			questionsDiv.appendChild(answerInput)
+		})
 
-			questionsContainer.appendChild(questionsDiv)
+		questionsContainer.appendChild(questionsDiv)
 
-			document.getElementById("questionPanel").prepend(questionsContainer)
+		document.getElementById("questionPanel").prepend(questionsContainer)
 
-			document.getElementById(
-				"buttonsContainer"
-			).innerHTML = `<button id="submitAnswer" type="button">Submit Answers</button>`
+		document.getElementById(
+			"buttonsContainer"
+		).innerHTML = `<button id="submitAnswer" type="button">Submit Answers</button>`
 
-			setTimeout(() => {
-				document.getElementById("liveStatus").innerHTML = ""
-			}, 1000)
+		setTimeout(() => {
+			document.getElementById("liveStatus").innerHTML = ""
+		}, 1000)
 
-			document
-				.getElementById("submitAnswer")
-				.addEventListener("click", async () => {
-					let answers = []
-					document
-						.querySelectorAll("#questions input")
-						.forEach((input) => {
-							answers.push({
-								questionId: input.dataset.id,
-								answer: input.value,
-							})
+		document
+			.getElementById("submitAnswer")
+			.addEventListener("click", async () => {
+				let answers = []
+				document
+					.querySelectorAll("#questions input")
+					.forEach((input) => {
+						answers.push({
+							questionId: input.dataset.id,
+							answer: input.value,
 						})
+					})
 
 				console.log(answers)
 			})
