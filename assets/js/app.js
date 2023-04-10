@@ -59,9 +59,19 @@ document
 
 			document.getElementById("content").appendChild(videoTag)
 
-			document.getElementById(
-				"liveStatus"
-			).innerHTML = `Status: Generating Questions...`
+		document.getElementById(
+			"liveStatus"
+		).innerHTML = `Status: Getting the captions...`
+
+		let captions = await fetch(
+			`https://youtube-questions.vercel.app/captions?youtubeVideoId=${videoId}`
+		)
+		captions = await captions.json()
+		window.localStorage.setItem("captions", JSON.stringify(captions))
+
+		document.getElementById(
+			"liveStatus"
+		).innerHTML = `Status: Generating Questions...`
 
 			let questions = await fetch(
 				"https://youtube-questions.vercel.app",
