@@ -10,7 +10,7 @@ web2vr.start()
 let questionPanel = new QuickXR("#questionPanel", {
 	position: {
 		x: 0.05,
-		y: 2.1,
+		y: 2.132,
 		z: -1.2,
 	},
 	rotation: {
@@ -23,9 +23,9 @@ questionPanel.start()
 
 let doubtPanel = new QuickXR("#doubtPanel", {
 	position: {
-		x: -1.3,
+		x: -1.076,
 		y: 2.627,
-		z: -0.5,
+		z: -0.165,
 	},
 	rotation: {
 		x: 0,
