@@ -59,6 +59,19 @@ document
 
 		document.getElementById("content").appendChild(videoTag)
 
+		let videoTitleSpan = document.createElement("span")
+		videoTitleSpan.id = "videoTitle"
+
+		let videoTitle = await fetch(`
+			https://www.youtube.com/oembed?format=json&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D${videoId}
+		`)
+
+		videoTitle = await videoTitle.json()
+
+		videoTitleSpan.innerHTML = videoTitle.title
+
+		document.getElementById("content").appendChild(videoTitleSpan)
+
 		document.getElementById(
 			"liveStatus"
 		).innerHTML = `Status: Getting the captions...`
