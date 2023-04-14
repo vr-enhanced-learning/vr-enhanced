@@ -1,11 +1,11 @@
-const web2vr = new QuickXR("#html-container", {
+const mainPanel = new QuickXR("#html-container", {
 	position: {
 		x: 0,
 		y: 2.1,
 		z: -0.6,
 	},
 })
-web2vr.start()
+mainPanel.start()
 
 let questionPanel = new QuickXR("#questionPanel", {
 	position: {
