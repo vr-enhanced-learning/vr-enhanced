@@ -1,4 +1,4 @@
-const web2vr = new Web2VR("#html-container", {
+const web2vr = new QuickXR("#html-container", {
 	position: {
 		x: 0,
 		y: 2.1,
@@ -7,7 +7,7 @@ const web2vr = new Web2VR("#html-container", {
 })
 web2vr.start()
 
-let questionPanel = new Web2VR("#questionPanel", {
+let questionPanel = new QuickXR("#questionPanel", {
 	position: {
 		x: 0.05,
 		y: 2.1,
@@ -21,7 +21,7 @@ let questionPanel = new Web2VR("#questionPanel", {
 })
 questionPanel.start()
 
-let doubtPanel = new Web2VR("#doubtPanel", {
+let doubtPanel = new QuickXR("#doubtPanel", {
 	position: {
 		x: -1.3,
 		y: 2.627,
@@ -87,7 +87,7 @@ document
 
 		document.getElementById(
 			"liveStatus"
-		).innerHTML = `Status: Questions Generated`
+		).innerHTML = `Status: Getting the model ready to answer your questions...`
 
 		let questionsContainer = document.createElement("div")
 		questionsContainer.id = "questionsContainer"
@@ -123,10 +123,6 @@ document
 		document.getElementById(
 			"buttonsContainer"
 		).innerHTML = `<button id="submitAnswer" type="button">Submit Answers</button>`
-
-		document.getElementById(
-			"liveStatus"
-		).innerHTML = `Status: Getting the model ready to answer your questions...`
 
 		document
 			.getElementById("submitAnswer")
