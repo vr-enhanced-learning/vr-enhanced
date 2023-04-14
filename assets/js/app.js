@@ -2,7 +2,7 @@ const mainPanel = new QuickXR("#html-container", {
 	position: {
 		x: 0,
 		y: 2.1,
-		z: -0.6,
+		z: -0.9,
 	},
 })
 mainPanel.start()
@@ -11,7 +11,7 @@ let questionPanel = new QuickXR("#questionPanel", {
 	position: {
 		x: 0.05,
 		y: 2.132,
-		z: -1.2,
+		z: -1.5,
 	},
 	rotation: {
 		x: 0,
@@ -25,7 +25,7 @@ let doubtPanel = new QuickXR("#doubtPanel", {
 	position: {
 		x: -1.076,
 		y: 2.627,
-		z: -0.165,
+		z: -0.465,
 	},
 	rotation: {
 		x: 0,
