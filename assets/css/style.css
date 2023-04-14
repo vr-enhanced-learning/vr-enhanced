@@ -250,6 +250,7 @@
 
 #content {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	gap: 20px;
@@ -259,6 +260,13 @@
 	border: 1px solid #111;
 	height: 300px;
 	width: 500px;
+}
+
+#videoTitle {
+	font-size: 16px;
+	font-weight: 700;
+	color: #fff;
+	text-align: center;
 }
 
 #questionsContainer {
