@@ -212,7 +212,7 @@ document
 			confidencePercent = confidencePercent.toFixed(2)
 
 			answerSpan.innerHTML =
-				answer.data[0] + " - " + confidencePercent + "%" + " confidence"
+				answer.data[0]
 		})
 
 		doubtDiv.appendChild(doubtTextArea)
