@@ -59,18 +59,23 @@ document
 
 		document.getElementById("content").appendChild(videoTag)
 
-		let videoTitleSpan = document.createElement("span")
-		videoTitleSpan.id = "videoTitle"
+		try {
+			let videoTitleSpan = document.createElement("span")
+			videoTitleSpan.id = "videoTitle"
 
-		let videoTitle = await fetch(`
+			let videoTitle = await fetch(`
 			https://www.youtube.com/oembed?format=json&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D${videoId}
 		`)
 
-		videoTitle = await videoTitle.json()
+			videoTitle = await videoTitle.json()
 
-		videoTitleSpan.innerHTML = videoTitle.title
+			videoTitleSpan.innerHTML = videoTitle.title
 
-		document.getElementById("content").appendChild(videoTitleSpan)
+			document.getElementById("content").appendChild(videoTitleSpan)
+		} catch (error) {
+			console.log(error)
+			console.log("Probably YouTube servers are blocked in this network")
+		}
 
 		document.getElementById(
 			"liveStatus"
@@ -211,8 +216,7 @@ document
 			let confidencePercent = answer.data[1].label * 100
 			confidencePercent = confidencePercent.toFixed(2)
 
-			answerSpan.innerHTML =
-				answer.data[0]
+			answerSpan.innerHTML = answer.data[0]
 		})
 
 		doubtDiv.appendChild(doubtTextArea)
