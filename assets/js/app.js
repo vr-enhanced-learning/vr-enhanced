@@ -10,8 +10,8 @@ mainPanel.start()
 let questionPanel = new QuickXR("#questionPanel", {
 	position: {
 		x: 0.05,
-		y: 2.132,
-		z: -1.5,
+		y: 2.232,
+		z: -1.1,
 	},
 	rotation: {
 		x: 0,
