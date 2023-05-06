@@ -309,7 +309,8 @@
 	color: #000;
 }
 
-#submitAnswer {
+#submitAnswer,
+#stirButton {
 	width: 90px;
 	height: 42px;
 	background-color: #0070f3;
@@ -375,4 +376,14 @@
 	background-color: #0070f3;
 	color: #fff;
 	height: 50px;
+}
+
+#stirPanelContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #000;
+	width: 270px;
+	gap: 10px;
+	padding: 1rem;
 }
