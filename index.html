@@ -38,6 +38,8 @@
 
 	<div id="doubtPanel"></div>
 
+	<div id="stirPanel"></div>
+
 	<a-scene renderer="colorManagement:false;" shadow="type: pcfsoft" id="a-scene">
 		<a-assets>
 			<a-asset-item id="environment" src="./assets/models/environment.glb"></a-asset-item>
@@ -46,6 +48,10 @@
 
 		<a-entity position="0.2 0 0" scale="1.5 1.5 1.5" rotation="" gltf-model="#environment"></a-entity>
 		<!-- <a-image id="readBook" src="#videoFrame" position="0 1.575 -0.64715" width="3.5" rotation="" scale="2 2 2" material="" geometry="width: 0.47; height: 0.29"></a-image> -->
+
+		<a-entity id="stir" position="-1.033 2.116 -0.733" rotation="0 0 0" scale="0.005 0.005 0.005" gltf-model=""
+			animation__rotation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear;"
+		></a-entity>
 
 	</a-scene>
 
