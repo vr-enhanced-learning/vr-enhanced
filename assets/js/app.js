@@ -24,7 +24,7 @@ questionPanel.start()
 let doubtPanel = new QuickXR("#doubtPanel", {
 	position: {
 		x: -1.076,
-		y: 2.627,
+		y: 2.657,
 		z: -0.465,
 	},
 	rotation: {
@@ -34,6 +34,20 @@ let doubtPanel = new QuickXR("#doubtPanel", {
 	},
 })
 doubtPanel.start()
+
+let stirPanel = new QuickXR("#stirPanel", {
+	position: {
+		x: -1.076,
+		y: 3.345,
+		z: -0.444,
+	},
+	rotation: {
+		x: 0,
+		y: 45,
+		z: 2,
+	},
+})
+stirPanel.start()
 
 document.getElementById("enterVR").addEventListener("click", () => {
 	document.getElementById("a-scene").enterVR()
@@ -237,6 +251,40 @@ document
 
 		document.getElementById("doubtPanel").prepend(doubtPanelContents)
 
+		let stirImage = document.createElement("img")
+		stirImage.src = "./assets/images/stir.png"
+		stirImage.alt = "stir"
+		stirImage.height = "50"
+		stirImage.width = "50"
+
+		let stirInput = document.createElement("input")
+		stirInput.type = "text"
+		stirInput.id = "stirInput"
+		stirInput.placeholder = "Enter entity..."
+		stirInput.width = "100"
+
+		let stirButton = document.createElement("button")
+		stirButton.id = "stirButton"
+		stirButton.type = "button"
+		stirButton.innerHTML = "STIR"
+
+		stirButton.addEventListener("click", () => {
+			let entity = document.getElementById("stirInput").value
+			if(entity == "mushroom") {
+				document.querySelector("#stir").setAttribute('gltf-model', './assets/models/mushroom.glb')
+			}
+		})
+
+		let stirPanelContainer = document.createElement("div")
+		stirPanelContainer.id = "stirPanelContainer"
+
+		stirPanelContainer.appendChild(stirImage)
+		stirPanelContainer.appendChild(stirInput)
+		stirPanelContainer.appendChild(stirButton)
+
+		document.getElementById("stirPanel").appendChild(stirPanelContainer)
+
+		
 		document.getElementById(
 			"liveStatus"
 		).innerHTML = `Status: Model ready to answer your questions!`
