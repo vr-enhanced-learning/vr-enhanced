@@ -49,6 +49,21 @@ let stirPanel = new QuickXR("#stirPanel", {
 })
 stirPanel.start()
 
+let summarizePanel = new QuickXR("#summarizePanel", {
+	position: {
+		x: 0,
+		y: 2.583,
+		z: -1.3,
+	},
+	rotation: {
+		x: -20,
+		y: 0,
+		z: 0,
+	},
+})
+
+summarizePanel.start()
+
 document.getElementById("enterVR").addEventListener("click", () => {
 	document.getElementById("a-scene").enterVR()
 	document.getElementById("enterVRButtonContainer").innerHTML = ""
@@ -283,6 +298,22 @@ document
 		stirPanelContainer.appendChild(stirButton)
 
 		document.getElementById("stirPanel").appendChild(stirPanelContainer)
+
+		// let summarizeContainer = document.createElement("div")
+		// summarizeContainer.id = "summarizeContainer"
+
+		// let summarizeContent = document.createElement("p")
+		// summarizeContent.id = "summarizeContent"
+		// summarizeContent.textContent = window.localStorage.getItem("summarization")
+
+		// summarizeContainer.appendChild(summarizeContent)
+
+		let summarizeContent = `<div id="summarizeContainer">
+			<p id="summarizeContent">${window.localStorage.getItem("summarization")}</p>
+		</div>`
+
+		document.getElementById("summarizePanel").innerHTML = summarizeContent
+
 
 		
 		document.getElementById(
