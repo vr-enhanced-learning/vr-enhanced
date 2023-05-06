@@ -387,3 +387,16 @@
 	gap: 10px;
 	padding: 1rem;
 }
+
+#summarizePanel {
+	width: 600px;
+}
+
+#summarizeContainer {
+	background: #ffffffb9;
+	padding: 0.1rem 0.6rem;
+}
+
+#summarizeContent {
+	padding: 0.5rem;
+}
