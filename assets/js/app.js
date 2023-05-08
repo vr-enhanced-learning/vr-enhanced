@@ -301,24 +301,22 @@ document
 
 		document.getElementById("stirPanel").appendChild(stirPanelContainer)
 
-		// let summarizeContainer = document.createElement("div")
-		// summarizeContainer.id = "summarizeContainer"
-
-		// let summarizeContent = document.createElement("p")
-		// summarizeContent.id = "summarizeContent"
-		// summarizeContent.textContent = window.localStorage.getItem("summarization")
-
-		// summarizeContainer.appendChild(summarizeContent)
-
-		let summarizeContent = `<div id="summarizeContainer">
-			<p id="summarizeContent">${window.localStorage.getItem("summarization")}</p>
+			let summarizeContent = `<div id="summarizeContainer">
+			<p id="summarizeContent">Generating Summary...</p>
 		</div>`
 
-		document.getElementById("summarizePanel").innerHTML = summarizeContent
+			setTimeout(() => {
+				let summarizeContent = `<div id="summarizeContainer">
+				<p id="summarizeContent">${window.localStorage.getItem("summarization")}</p>
+			</div>`
+				document.getElementById("summarizePanel").innerHTML =
+					summarizeContent
+			}, 2000)
 
+			document.getElementById("summarizePanel").innerHTML =
+				summarizeContent
 
-		
-		document.getElementById(
-			"liveStatus"
-		).innerHTML = `Status: Model ready to answer your questions!`
+			document.getElementById(
+				"liveStatus"
+			).innerHTML = `Status: Model ready to answer your questions!`
 	})
