@@ -285,8 +285,10 @@ document
 
 		stirButton.addEventListener("click", () => {
 			let entity = document.getElementById("stirInput").value
-			if(entity == "mushroom") {
-				document.querySelector("#stir").setAttribute('gltf-model', './assets/models/mushroom.glb')
+			if (entity == "mushroom") {
+				document
+					.querySelector("#stir")
+					.setAttribute("gltf-model", "./assets/models/mushroom.glb")
 			}
 		})
 
