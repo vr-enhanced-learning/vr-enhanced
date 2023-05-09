@@ -296,10 +296,25 @@ document
 
 		stirButton.addEventListener("click", () => {
 			let entity = document.getElementById("stirInput").value
-			if (entity == "mushroom") {
+			let modelName = ""
+
+			if (entity.includes("apple")) {
+				modelName = "apple"
+			} else if (entity.includes("cycle")) {
+				modelName = "cycle"
+			} else if (entity.includes("fungi")) {
+				modelName = "fungi"
+			} else if (entity.includes("rabbit")) {
+				modelName = "rabbit"
+			}
+
+			if (modelName != "") {
 				document
 					.querySelector("#stir")
-					.setAttribute("gltf-model", "./assets/models/mushroom.glb")
+					.setAttribute(
+						"gltf-model",
+						`./assets/models/${modelName}.glb`
+					)
 			}
 		})
 
