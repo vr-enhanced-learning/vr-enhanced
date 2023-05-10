@@ -185,7 +185,17 @@ document
 							})
 						})
 
-					console.log(answers)
+					document.getElementById(
+						"questionPanel"
+					).innerHTML = `<div id="questionsContainer">
+						<img src="./assets/images/question.png" alt="question" height="150" width="300">
+						<span id="successSpan">Successfully submitted your answers!</span>
+					</div>`
+
+					window.localStorage.setItem(
+						"answers",
+						JSON.stringify(answers)
+					)
 				})
 		})
 
