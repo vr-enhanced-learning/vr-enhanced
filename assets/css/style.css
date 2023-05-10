@@ -334,6 +334,12 @@
 	text-align: center;
 }
 
+#successSpan {
+	color: #000;
+	font-size: 2rem;
+	text-align: center;
+}
+
 #doubtPanelContents {
 	display: flex;
 	flex-direction: column;
