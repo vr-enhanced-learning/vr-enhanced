@@ -337,19 +337,42 @@ document
 
 		setTimeout(async () => {
 			let summarizeContent = `<div id="summarizeContainer">
-			<p id="summarizeContent">Generating Summary...</p>
-		</div>`
-
-			setTimeout(() => {
-				let summarizeContent = `<div id="summarizeContainer">
-				<p id="summarizeContent">${window.localStorage.getItem("summarization")}</p>
+				<p id="summarizeContent">Generating Summary...</p>
 			</div>`
-				document.getElementById("summarizePanel").innerHTML =
-					summarizeContent
-			}, 2000)
 
 			document.getElementById("summarizePanel").innerHTML =
 				summarizeContent
+
+			setTimeout(async () => {
+				if (videoId == "WMXhk_SATTc") {
+					let summarizeContent = `<div id="summarizeContainer">
+						<p id="summarizeContent">${window.localStorage.getItem("summarization")}</p>
+					</div>`
+					document.getElementById("summarizePanel").innerHTML =
+						summarizeContent
+				} else {
+					console.log("Not running the above thing")
+					let summarizerRequest = await fetch("https://currentlyexhausted-flan-t5-summarizer.hf.space/run/predict", {
+						method: "POST",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify(
+							{
+								"data": [
+								  	JSON.parse(window.localStorage.getItem("captions"))
+								]
+							}
+						)
+					})
+					let summarizerResponse = await summarizerRequest.json()
+					let text = summarizerResponse.data[0]
+
+					let summarizeContent = `<div id="summarizeContainer">
+						<p id="summarizeContent">${text}</p>
+					</div>`
+
+					document.getElementById("summarizePanel").innerHTML = summarizeContent
+				}
+			}, 2000)
 
 			document.getElementById(
 				"liveStatus"
