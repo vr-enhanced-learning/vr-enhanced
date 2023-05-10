@@ -344,17 +344,17 @@ document
 			document.getElementById("summarizePanel").innerHTML =
 				summarizeContent
 
-			setTimeout(async () => {
-				let summarizerRequest = await fetch(`https://turb-api.adaptable.app/api/summary/${videoId}`)
-				let text = await summarizerRequest.text()
+			let summarizerRequest = await fetch(
+				`https://turb-api.adaptable.app/api/summary/${videoId}`
+			)
+			let text = await summarizerRequest.text()
 
-				let summarizeContent = `<div id="summarizeContainer">
+			summarizeContent = `<div id="summarizeContainer">
 						<p id="summarizeContent">${text}</p>
 					</div>`
 
-				document.getElementById("summarizePanel").innerHTML =
-					summarizeContent
-			}, 2000)
+			document.getElementById("summarizePanel").innerHTML =
+				summarizeContent
 
 			document.getElementById(
 				"liveStatus"
