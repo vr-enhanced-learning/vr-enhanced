@@ -306,6 +306,14 @@ document
 				modelName = "fungi"
 			} else if (entity.includes("rabbit")) {
 				modelName = "rabbit"
+			} else if (entity.includes("ant")) {
+				modelName = "ant"
+			} else if (entity.includes("cheese")) {
+				modelName = "cheese"
+			} else if (entity.includes("grasshopper")) {
+				modelName = "grasshopper"
+			} else if (entity.includes("shark")) {
+				modelName = "shark"
 			}
 
 			if (modelName != "") {
