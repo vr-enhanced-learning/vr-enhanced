@@ -335,7 +335,7 @@ document
 				summarizeContent
 
 			setTimeout(async () => {
-				let summarizerRequest = await fetch(`https://turb-api.adaptable.app/summary/${videoId}`)
+				let summarizerRequest = await fetch(`https://turb-api.adaptable.app/api/summary/${videoId}`)
 				let text = await summarizerRequest.text()
 
 				let summarizeContent = `<div id="summarizeContainer">
