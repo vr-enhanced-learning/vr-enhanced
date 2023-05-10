@@ -18,3 +18,11 @@ VR-Based Education With STIR and TURB
 - [x] Phase 2 Model deployment
 - [x] Web Player implementation
 - [x] QuickXR integration, web player integration, context extraction - declarative and model-based
+
+## Third Review
+- [ ] Rendering Engine - Release Candidate
+- [x] QuickXR - Release Candidate
+- [x] TURB Phase - 3: Context based summary generator. Integration with Sub model from Phase 1 & 2
+- [x] STIR 100% with edge caching and hyper parameter fine tuning
+- [x] Phase 3 Model deployment
+- [x] QuickXR bridge with STIR and TURB
