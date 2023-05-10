@@ -128,16 +128,7 @@ document
 
 		setTimeout(async () => {
 			let questions = await fetch(
-				"https://youtube-questions.vercel.app",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						youtubeVideoId: videoId,
-					}),
-				}
+				`https://turb-api.adaptable.app/api/question/${videoId}`
 			)
 
 			questions = await questions.json()
