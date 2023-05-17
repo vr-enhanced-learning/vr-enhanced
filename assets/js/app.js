@@ -199,20 +199,6 @@ document
 				})
 		})
 
-		await fetch(
-			"https://currentlyexhausted-question-answering.hf.space/run/predict",
-			{
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({
-					data: [
-						JSON.parse(window.localStorage.getItem("captions")),
-						"what is this about?",
-					],
-				}),
-			}
-		)
-
 		let doubtContainer = document.createElement("div")
 		doubtContainer.id = "doubtContainer"
 
