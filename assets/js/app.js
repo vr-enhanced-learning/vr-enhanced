@@ -228,7 +228,7 @@ document
 			answerSpan.innerHTML = "Getting the answer..."
 
 			let answer = await fetch(
-				"https://currentlyexhausted-question-answering.hf.space/run/predict",
+				"https://currentlyexhausted-t5-answering.hf.space/run/predict",
 				{
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
