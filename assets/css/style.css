@@ -324,6 +324,7 @@
 	align-items: center;
 	justify-content: center;
 	gap: 10px;
+	height: 560px;
 }
 
 #questionPanel h1 {
