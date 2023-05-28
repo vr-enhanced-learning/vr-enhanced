@@ -223,22 +223,12 @@ document
 			answerSpan.innerHTML = "Getting the answer..."
 
 			let answer = await fetch(
-				"https://currentlyexhausted-t5-answering.hf.space/run/predict",
-				{
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({
-						data: [context, textArea.value + "?"],
-					}),
-				}
+				`https://turb-answer.adaptable.app/answer?videoId=${videoId}&question=${textArea.value}`
 			)
 
-			answer = await answer.json()
+			answer = await answer.text()
 
-			let confidencePercent = answer.data[1].label * 100
-			confidencePercent = confidencePercent.toFixed(2)
-
-			answerSpan.innerHTML = answer.data[0]
+			answerSpan.innerHTML = answer
 		})
 
 		doubtDiv.appendChild(doubtTextArea)
