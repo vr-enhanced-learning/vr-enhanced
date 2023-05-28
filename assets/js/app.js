@@ -23,9 +23,9 @@ questionPanel.start()
 
 let doubtPanel = new QuickXR("#doubtPanel", {
 	position: {
-		x: -1.076,
-		y: 2.657,
-		z: -0.465,
+		x: -1.259,
+		y: 2.667,
+		z: -0.136,
 	},
 	rotation: {
 		x: 0,
@@ -37,9 +37,9 @@ doubtPanel.start()
 
 let stirPanel = new QuickXR("#stirPanel", {
 	position: {
-		x: -1.076,
-		y: 3.345,
-		z: -0.444,
+		x: -1.263,
+		y: 3.519,
+		z: -0.155,
 	},
 	rotation: {
 		x: 0,
@@ -52,7 +52,7 @@ stirPanel.start()
 let summarizePanel = new QuickXR("#summarizePanel", {
 	position: {
 		x: 0,
-		y: 2.583,
+		y: 2.707,
 		z: -1.3,
 	},
 	rotation: {
