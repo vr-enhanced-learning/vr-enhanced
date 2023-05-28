@@ -126,78 +126,73 @@ document
 			"liveStatus"
 		).innerHTML = `Status: Generating Questions...`
 
-		setTimeout(async () => {
-			let questions = await fetch(
-				`https://turb-api.adaptable.app/api/question/${videoId}`
-			)
+		let questions = await fetch(
+			`https://turb-api.adaptable.app/api/question/${videoId}`
+		)
 
-			questions = await questions.json()
+		questions = await questions.json()
 
-			document.getElementById(
-				"liveStatus"
-			).innerHTML = `Status: Getting the model ready to answer your questions...`
+		document.getElementById(
+			"liveStatus"
+		).innerHTML = `Status: Getting the model ready to answer your questions...`
 
-			let questionsContainer = document.createElement("div")
-			questionsContainer.id = "questionsContainer"
+		let questionsContainer = document.createElement("div")
+		questionsContainer.id = "questionsContainer"
 
-			let questionsDiv = document.createElement("div")
-			questionsDiv.id = "questions"
+		let questionsDiv = document.createElement("div")
+		questionsDiv.id = "questions"
 
-			let imageTag = document.createElement("img")
-			imageTag.src = "./assets/images/question.png"
-			imageTag.alt = "question"
-			imageTag.height = "150"
-			imageTag.width = "300"
+		let imageTag = document.createElement("img")
+		imageTag.src = "./assets/images/question.png"
+		imageTag.alt = "question"
+		imageTag.height = "150"
+		imageTag.width = "300"
 
-			questionsContainer.appendChild(imageTag)
+		questionsContainer.appendChild(imageTag)
 
-			questions.forEach((question, index) => {
-				let questionSpan = document.createElement("span")
-				questionSpan.innerHTML = question
+		questions.forEach((question, index) => {
+			let questionSpan = document.createElement("span")
+			questionSpan.innerHTML = question
 
-				let answerInput = document.createElement("input")
-				answerInput.type = "text"
-				answerInput.placeholder = "Enter Answer"
-				answerInput.dataset.id = index + 1
+			let answerInput = document.createElement("input")
+			answerInput.type = "text"
+			answerInput.placeholder = "Enter Answer"
+			answerInput.dataset.id = index + 1
 
-				questionsDiv.appendChild(questionSpan)
-				questionsDiv.appendChild(answerInput)
-			})
+			questionsDiv.appendChild(questionSpan)
+			questionsDiv.appendChild(answerInput)
+		})
 
-			questionsContainer.appendChild(questionsDiv)
+		questionsContainer.appendChild(questionsDiv)
 
-			document.getElementById("questionPanel").prepend(questionsContainer)
+		document.getElementById("questionPanel").prepend(questionsContainer)
 
-			document.getElementById(
-				"buttonsContainer"
-			).innerHTML = `<button id="submitAnswer" type="button">Submit Answers</button>`
+		document.getElementById(
+			"buttonsContainer"
+		).innerHTML = `<button id="submitAnswer" type="button">Submit Answers</button>`
 
-			document
-				.getElementById("submitAnswer")
-				.addEventListener("click", async () => {
-					let answers = []
-					document
-						.querySelectorAll("#questions input")
-						.forEach((input) => {
-							answers.push({
-								questionId: input.dataset.id,
-								answer: input.value,
-							})
+		document
+			.getElementById("submitAnswer")
+			.addEventListener("click", async () => {
+				let answers = []
+				document
+					.querySelectorAll("#questions input")
+					.forEach((input) => {
+						answers.push({
+							questionId: input.dataset.id,
+							answer: input.value,
 						})
+					})
 
-					document.getElementById(
-						"questionPanel"
-					).innerHTML = `<div id="questionsContainer">
+				document.getElementById(
+					"questionPanel"
+				).innerHTML = `<div id="questionsContainer">
 						<img src="./assets/images/question.png" alt="question" height="150" width="300">
 						<span id="successSpan">Successfully submitted your answers!</span>
 					</div>`
 
-					window.localStorage.setItem(
-						"answers",
-						JSON.stringify(answers)
-					)
-				})
-		})
+				window.localStorage.setItem("answers", JSON.stringify(answers))
+			})
 
 		let doubtContainer = document.createElement("div")
 		doubtContainer.id = "doubtContainer"
@@ -322,28 +317,24 @@ document
 
 		document.getElementById("stirPanel").appendChild(stirPanelContainer)
 
-		setTimeout(async () => {
-			let summarizeContent = `<div id="summarizeContainer">
+		let summarizeContent = `<div id="summarizeContainer">
 				<p id="summarizeContent">Generating Summary...</p>
 			</div>`
 
-			document.getElementById("summarizePanel").innerHTML =
-				summarizeContent
+		document.getElementById("summarizePanel").innerHTML = summarizeContent
 
-			let summarizerRequest = await fetch(
-				`https://turb-api.adaptable.app/api/summary/${videoId}`
-			)
-			let text = await summarizerRequest.text()
+		let summarizerRequest = await fetch(
+			`https://turb-api.adaptable.app/api/summary/${videoId}`
+		)
+		let text = await summarizerRequest.text()
 
-			summarizeContent = `<div id="summarizeContainer">
+		summarizeContent = `<div id="summarizeContainer">
 						<p id="summarizeContent">${text}</p>
 					</div>`
 
-			document.getElementById("summarizePanel").innerHTML =
-				summarizeContent
+		document.getElementById("summarizePanel").innerHTML = summarizeContent
 
-			document.getElementById(
-				"liveStatus"
-			).innerHTML = `Status: Model ready to answer your questions!`
-		})
+		document.getElementById(
+			"liveStatus"
+		).innerHTML = `Status: Model ready to answer your questions!`
 	})
