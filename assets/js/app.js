@@ -1,3 +1,9 @@
+let urlParams = new URLSearchParams(window.location.search)
+let videoId = urlParams.get("videoId")
+if (videoId) {
+	document.getElementById("videoId").value = videoId
+}
+
 const mainPanel = new QuickXR("#html-container", {
 	position: {
 		x: 0,
